@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">Basiccode</string>
+    <string name="app_name">GameGuesser</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_encyclopedia">Encyclopedia</string>
+    <string name="title_chatbot">Chatbot</string>
+    <string name="title_settings">Settings</string>
 </resources>
