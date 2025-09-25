@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\GameGuesserAPI.props" />
+</Project>

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Yx5Hyca1TbE=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\luke jordan\\Documents\\Varsity College\\2025\\PROG7314 POE\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\luke jordan\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.2\\microsoft.aspnetcore.openapi.9.0.2.nupkg.sha512",
+    "C:\\Users\\luke jordan\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
