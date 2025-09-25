@@ -12,7 +12,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ../android-app
+        working-directory: ./android-app
 
     steps:
       - name: Checkout code
