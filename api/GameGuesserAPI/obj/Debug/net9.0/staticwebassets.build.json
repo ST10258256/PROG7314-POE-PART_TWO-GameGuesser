@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "DvWdvV6Jj/ySKmg+RnX1h8M3V/sGXQjqmKdDg6HsiqI=",
+  "Source": "GameGuesserAPI",
+  "BasePath": "_content/GameGuesserAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
