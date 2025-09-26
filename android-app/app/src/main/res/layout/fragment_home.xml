@@ -4,26 +4,148 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2E2157"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
+    <!-- Welcome Section -->
+    <LinearLayout
+        android:id="@+id/welcomeSection"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <Button
-        android:id="@+id/playButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play Game based off keywords"
-        app:layout_constraintTop_toBottomOf="@id/text_home"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/welcomeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi, Welcome Back"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/usernameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User"
+            android:textColor="#E0DAF5"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Game Guesser! Test your skills by guessing games."
+            android:textColor="#C5BEDF"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+
+    <!-- Game Guesser Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/gameGuesserCard"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="#FFF9E6"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
+    app:layout_constraintTop_toBottomOf="@id/welcomeSection"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/gameGuesserTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Game Guesser"
+            android:textColor="#2E2157"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/gameGuesserStreak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Streak: "
+            android:textColor="#FF9800"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/playGameGuesserButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#2E2157"
+            android:layout_marginTop="16dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+    <!-- Key Words Card -->
+<androidx.cardview.widget.CardView
+android:id="@+id/keyWordsCard"
+android:layout_width="0dp"
+android:layout_height="200dp"
+android:layout_margin="16dp"
+app:cardBackgroundColor="#FFF9E6"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
+    app:layout_constraintTop_toBottomOf="@id/gameGuesserCard"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:gravity="center"
+android:padding="16dp">
+
+<TextView
+    android:id="@+id/keyWordsTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Key Words"
+    android:textColor="#2E2157"
+    android:textSize="20sp"
+    android:textStyle="bold"/>
+
+<TextView
+    android:id="@+id/keyWordsStreak"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Streak: "
+    android:textColor="#FF9800"
+    android:textSize="18sp"
+    android:layout_marginTop="8dp"/>
+
+<Button
+    android:id="@+id/playKeyWordsButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Play"
+    android:textColor="@android:color/white"
+    android:backgroundTint="#2E2157"
+    android:layout_marginTop="16dp"/>
+</LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

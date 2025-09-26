@@ -33,9 +33,9 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         // Text binding
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            binding.textHome.text = it
-        }
+//        homeViewModel.text.observe(viewLifecycleOwner) {
+//            binding.textHome.text = it
+//        }
 
         // Button click to open KeyGameFragment
 //        binding.playButton.setOnClickListener {
@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
 //                .commit()
 //        }
 
-        binding.playButton.setOnClickListener {
+        binding.playKeyWordsButton.setOnClickListener {
             findNavController().navigate(R.id.keyGameFragment)
         }
         return root
