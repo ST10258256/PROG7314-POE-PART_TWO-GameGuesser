@@ -42,4 +42,11 @@
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
 
+    <fragment
+        android:id="@+id/keyGameFragment"
+        android:name="com.example.gameguesser.ui.keyWordGame.KeyGameFragment"
+        android:label="Keyword Game"
+        tools:layout="@layout/fragment_key_game" />
+
+
 </navigation>
