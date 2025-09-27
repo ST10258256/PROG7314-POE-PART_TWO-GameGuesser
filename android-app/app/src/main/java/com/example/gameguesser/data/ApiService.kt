@@ -17,4 +17,7 @@ interface ApiService {
         @Query("gameId") gameId: Int,
         @Query("guess") guess: String
     ): Call<GuessResponse>
+
+    @GET("api/games")
+    fun getAllGames(): Call<List<String>>
 }

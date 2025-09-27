@@ -2,66 +2,94 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:padding="16dp"
-    android:gravity="center_horizontal">
+    android:background="#2E2157">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/titleText"
+    <LinearLayout
+        android:id="@+id/guessHeartsContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Game Guesser"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:paddingBottom="24dp"/>
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="16dp">
 
-    <!-- Keywords Section -->
-    <TextView
-        android:id="@+id/keywordsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Keywords:"
-        android:textSize="18sp"
-        android:paddingBottom="8dp"/>
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_heart"
+            android:contentDescription="Guess left" />
 
-    <TextView
-        android:id="@+id/keywordsText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="(keywords will appear here)"
-        android:textSize="16sp"
-        android:padding="8dp"
-        android:background="@android:color/darker_gray"
-        android:textColor="@android:color/white"
-        android:gravity="center"/>
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_heart"
+            android:contentDescription="Guess left" />
 
-    <!-- Guess Input -->
-    <EditText
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_heart"
+            android:contentDescription="Guess left" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_heart"
+            android:contentDescription="Guess left" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_heart"
+            android:contentDescription="Guess left" />
+
+    </LinearLayout>
+
+
+    <!-- Guess Input with AutoComplete -->
+    <AutoCompleteTextView
         android:id="@+id/guessInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your guess"
-        android:inputType="textPersonName"
-        android:layout_marginTop="24dp"/>
+        android:hint="Guess the game"
+        android:background="@drawable/rounded_edittext"
+        android:padding="12dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="#AAA"
+        android:popupBackground="@color/white"
+        android:completionThreshold="1"
+        android:layout_marginBottom="16dp"/>
 
-    <!-- Submit Button -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/keywordsChipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:singleLine="false"
+        app:chipSpacing="8dp"
+        android:gravity="center"/>
+
+
+    <!-- Guess Button -->
     <Button
         android:id="@+id/guessButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit Guess"
+        android:text="Guess"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#2E2157"
         android:layout_marginTop="16dp"/>
 
-    <!-- Result / Hint -->
+    <!-- Result Text -->
     <TextView
         android:id="@+id/resultText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="16sp"
-        android:paddingTop="16dp"
-        android:gravity="center"/>
-
-
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:layout_marginTop="12dp"/>
 </LinearLayout>
