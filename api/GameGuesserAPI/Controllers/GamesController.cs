@@ -118,7 +118,13 @@ namespace GameGuesserAPI.Controllers
         {
             var random = new Random();
             var game = Games[random.Next(Games.Count)];
-            return Ok(new { game.Id, game.Keywords });
+            return Ok(new 
+            { 
+                game.Id, 
+                game.Name,          
+                game.CoverImageUrl,  
+                game.Keywords
+            });
         }
 
         private static Dictionary<int, int> GameClueIndex = new Dictionary<int, int>();
@@ -148,6 +154,14 @@ namespace GameGuesserAPI.Controllers
             GameClueIndex[gameId] = clueIndex + 1;
 
             return Ok(new { correct = false, hint = clue });
+        }
+
+
+        [HttpGet]
+        public IActionResult GetAllGames()
+        {
+            var gameNames = Games.Select(g => g.Name).ToList();
+            return Ok(gameNames);
         }
     }
 }
