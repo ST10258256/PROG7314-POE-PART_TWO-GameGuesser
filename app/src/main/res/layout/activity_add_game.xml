@@ -1,10 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddGame">
+    android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Basic Info -->
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Game Name" />
+
+        <EditText
+            android:id="@+id/editTextGenre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Genre"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextPlatform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Platforms (comma separated)"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextReleaseYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Release Year"
+            android:inputType="number"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextDeveloper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Developer"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextPublisher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Publisher"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:layout_marginTop="8dp" />
+
+
+
+        <EditText
+            android:id="@+id/editTextBudget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Budget"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextSaga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Saga"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextPOV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="POV"
+            android:layout_marginTop="8dp" />
+
+        <!-- Clues: 5 inputs, first 3 required -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clues (first 3 required)"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/editTextClue1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Clue 1" />
+
+        <EditText
+            android:id="@+id/editTextClue2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Clue 2"
+            android:layout_marginTop="4dp"/>
+
+        <EditText
+            android:id="@+id/editTextClue3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Clue 3"
+            android:layout_marginTop="4dp"/>
+
+        <EditText
+            android:id="@+id/editTextClue4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Clue 4 (optional)"
+            android:layout_marginTop="4dp"/>
+
+        <EditText
+            android:id="@+id/editTextClue5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Clue 5 (optional)"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Image preview -->
+        <ImageView
+            android:id="@+id/imagePreview"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:background="#DDDDDD"
+            android:contentDescription="Cover Image Preview" />
+
+        <!-- Cover image picker -->
+        <EditText
+            android:id="@+id/editTextCoverImagePath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tap to pick cover image"
+            android:layout_marginTop="8dp"
+            android:focusable="false"
+            android:clickable="true" />
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Game"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>

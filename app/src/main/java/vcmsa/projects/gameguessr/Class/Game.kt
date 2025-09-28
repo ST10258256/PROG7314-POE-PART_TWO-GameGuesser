@@ -21,6 +21,6 @@ data class Game(
     val budget: Double,
     val saga: String,
     val pov: String,
-    val keywords: List<String>,
+    val keywords: List<String> = emptyList() ,
     val clues: List<String>
 )

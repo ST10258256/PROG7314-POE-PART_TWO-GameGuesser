@@ -3,6 +3,7 @@ package vcmsa.projects.gameguessr.DAOs
 import androidx.room.*
 import vcmsa.projects.gameguessr.Class.Game
 
+@Dao
 interface GameDAO {
     // Insert a single game
     @Insert
