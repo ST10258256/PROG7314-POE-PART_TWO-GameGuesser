@@ -129,7 +129,7 @@ class AddGame : AppCompatActivity() {
                     pov = pov,
                     clues = clues
                 )
-                gameDao.insertGame(game)
+                gameDao.insertGame(game)//dao function to insert the game
 
                 launch(Dispatchers.Main) {
                     Toast.makeText(

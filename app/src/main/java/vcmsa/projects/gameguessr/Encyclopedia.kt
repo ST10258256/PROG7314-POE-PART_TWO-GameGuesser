@@ -35,6 +35,7 @@ class Encyclopedia : AppCompatActivity() {
         loadGames()
     }
 
+    //auto-refreshes every time to get the latest games
     private fun loadGames() {
         CoroutineScope(Dispatchers.IO).launch {
             val games: List<Game> = gameDao.getAllGames()
