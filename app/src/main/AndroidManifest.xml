@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GameGuessr">
         <activity
+            android:name=".Encyclopedia"
+            android:exported="false" />
+        <activity
+            android:name=".AddGame"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
