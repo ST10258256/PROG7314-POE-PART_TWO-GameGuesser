@@ -2,21 +2,25 @@ package vcmsa.projects.gameguessr.Class
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 
 @Entity(tableName = "games")
+//roomdb does not support List<String> directly so,
+//we have convert into a storable type using a TypeConverter
+@TypeConverters(GameConverters::class)
 data class Game(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String,
-    val Genre: String,
-    val Platform: List<String>,
-    val ReleaseYear: Int,
-    val Developer: String,
-    val Publisher: String,
-    val Description: String,
-    val CoverImage: String,
-    val Budget: Double,
-    val Saga: String,
-    val POV: String,
-    val Keywords: List<String>,
-    val Clues: List<String>
+    val genre: String,
+    val platform: List<String>,
+    val releaseYear: Int,
+    val developer: String,
+    val publisher: String,
+    val description: String,
+    val coverImagePath: String,
+    val budget: Double,
+    val saga: String,
+    val pov: String,
+    val keywords: List<String>,
+    val clues: List<String>
 )
