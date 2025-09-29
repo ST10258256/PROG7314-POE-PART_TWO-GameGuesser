@@ -2,10 +2,12 @@ package com.example.gameguesser
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Looper
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.postDelayed
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -15,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import java.util.logging.Handler
 
 class LoginActivity : AppCompatActivity() {
 
@@ -38,11 +41,27 @@ class LoginActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        // cheks if they havealready signed in
+        // checks if they have already signed in
         val account = GoogleSignIn.getLastSignedInAccount(this)
+
+        //used this to test the offline mode, works
+        //val account: GoogleSignInAccount? = null
+
         if (account != null) {
-            // wont show the signin if so
+            // User still has a valid Google session
             goToMainActivity(account)
+        } else {
+            // Fallback: check SharedPreferences for offline mode
+            val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+            val savedUserId = prefs.getString("userId", null)
+            val savedUserName = prefs.getString("userName", null)
+
+            if (savedUserId != null) {
+                // User logged in before, allow offline access
+                Toast.makeText(this, "Welcome back $savedUserName (offline)", Toast.LENGTH_SHORT).show()
+                android.os.Handler(Looper.getMainLooper()).postDelayed({
+                    goToMainActivity(null)
+                }, 500)}
         }
 
         val btnGoogleSignIn = findViewById<SignInButton>(R.id.btnGoogleSignIn)
@@ -88,7 +107,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun goToMainActivity(account: GoogleSignInAccount) {
+    private fun goToMainActivity(account: GoogleSignInAccount?) {
         // flow to main, cant go back to login, needs to logout, ps. added in logout
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
