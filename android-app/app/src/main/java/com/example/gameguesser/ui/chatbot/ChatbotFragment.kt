@@ -28,12 +28,12 @@ class ChatbotFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // setup RecyclerView + adapter
+
         adapter = ChatAdapter()
         binding.messagesRecycler.layoutManager = LinearLayoutManager(requireContext()).apply { stackFromEnd = true }
         binding.messagesRecycler.adapter = adapter
 
-        // Observe messages LiveData and update adapter
+
         vm.messages.observe(viewLifecycleOwner) { list ->
             adapter.setMessages(list)
             if (adapter.itemCount > 0) {
@@ -41,10 +41,9 @@ class ChatbotFragment : Fragment() {
             }
         }
 
-        // send button
         binding.sendButton.setOnClickListener { sendCurrentText() }
 
-        // send on soft-keyboard send action
+
         binding.messageEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEND) {
                 sendCurrentText()
