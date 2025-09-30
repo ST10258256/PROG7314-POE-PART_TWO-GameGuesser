@@ -15,7 +15,6 @@ c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PA
 c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.csproj.CoreCompileInputs.cache
 c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.MvcApplicationPartsAssemblyInfo.cs
 c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.MvcApplicationPartsAssemblyInfo.cache
-c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.sourcelink.json
 c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\scopedcss\bundle\GameGuesserAPI.styles.css
 c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\staticwebassets.build.json
 c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\staticwebassets.development.json
@@ -32,3 +31,6 @@ c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PA
 c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.pdb
 c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.genruntimeconfig.cache
 c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\ref\GameGuesserAPI.dll
+C:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

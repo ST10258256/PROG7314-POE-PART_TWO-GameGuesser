@@ -14,7 +14,7 @@ namespace GameGuesserAPI.Controllers
                 Id = 1,
                 Name = "The Legend of Zelda: Breath of the Wild",
                 Genre = "Action-adventure",
-                Platforms = {"Nintendo Switch" },
+                Platforms = new List<string> {"Nintendo Switch" },
                 ReleaseYear = 2017,
                 Developer = "Nintendo",
                 Publisher = "Nintendo",
@@ -31,7 +31,7 @@ namespace GameGuesserAPI.Controllers
                 Id = 2,
                 Name = "God of War(2018)",
                 Genre = "Action-adventure",
-                Platforms = {"PlayStation 4", "PlayStation 5", "PC" },
+                Platforms = new List<string> {"PlayStation 4", "PlayStation 5", "PC" },
                 ReleaseYear = 2018,
                 Developer = "Santa Monica Studio",
                 Publisher = "Sony Interactive Entertainment",
@@ -48,7 +48,7 @@ namespace GameGuesserAPI.Controllers
                 Id = 3,
                 Name = "The Witcher 3: Wild Hunt",
                 Genre = "Action RPG",
-                Platforms = {"PC", "PlayStation 4", "Xbox One", "Nintendo Switch" },
+                Platforms = new List<string> {"PC", "PlayStation 4", "Xbox One", "Nintendo Switch" },
                 ReleaseYear = 2015,
                 Developer = "CD Projekt Red",
                 Publisher = "CD Projekt",
@@ -65,7 +65,7 @@ namespace GameGuesserAPI.Controllers
                 Id = 4,
                 Name = "Red Dead Redemption 2",
                 Genre = "Action-adventure",
-                Platforms = {"PlayStation 4", "Xbox One", "PC" },
+                Platforms = new List<string> {"PlayStation 4", "Xbox One", "PC" },
                 ReleaseYear = 2018,
                 Developer = "Rockstar Games",
                 Publisher = "Rockstar Games",
@@ -82,7 +82,7 @@ namespace GameGuesserAPI.Controllers
                 Id = 5,
                 Name = "Minecraft",
                 Genre = "Sandbox, Survival",
-                Platforms = {"PC", "PlayStation", "Xbox", "Nintendo Switch", "Mobile" },
+                Platforms = new List<string> {"PC", "PlayStation", "Xbox", "Nintendo Switch", "Mobile" },
                 ReleaseYear = 2011,
                 Developer = "Mojang Studios",
                 Publisher = "Mojang Studios",
@@ -99,7 +99,7 @@ namespace GameGuesserAPI.Controllers
                 Id = 6,
                 Name = "Hades",
                 Genre = "Roguelike, Action",
-                Platforms = {"PC", "Nintendo Switch", "PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S" },
+                Platforms = new List<string> {"PC", "Nintendo Switch", "PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S" },
                 ReleaseYear = 2020,
                 Developer = "Supergiant Games",
                 Publisher = "Supergiant Games",
@@ -118,20 +118,50 @@ namespace GameGuesserAPI.Controllers
         {
             var random = new Random();
             var game = Games[random.Next(Games.Count)];
-            return Ok(new { game.Id, game.Keywords });
+            return Ok(new 
+            { 
+                game.Id, 
+                game.Name,          
+                game.CoverImageUrl,  
+                game.Keywords
+            });
         }
+
+        private static Dictionary<int, int> GameClueIndex = new Dictionary<int, int>();
 
         [HttpPost("guess")]
         public IActionResult SubmitGuess(int gameId, string guess)
         {
             var game = Games.FirstOrDefault(g => g.Id == gameId);
             if (game == null)
-            {
                 return NotFound("Game not found.");
+
+            if (guess.Equals(game.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                if (GameClueIndex.ContainsKey(gameId))
+                    GameClueIndex[gameId] = 0;
+
+                return Ok(new { correct = true, message = "Correct guess!" });
+            }
+            int clueIndex = 0;
+            if (GameClueIndex.ContainsKey(gameId))
+            {
+                clueIndex = GameClueIndex[gameId];
             }
 
-            var fact = game.Clues.FirstOrDefault();
-            return Ok(new {correct = false, hint = fact });
+            string clue = clueIndex < game.Clues.Count ? game.Clues[clueIndex] : "No more clues available.";
+
+            GameClueIndex[gameId] = clueIndex + 1;
+
+            return Ok(new { correct = false, hint = clue });
+        }
+
+
+        [HttpGet]
+        public IActionResult GetAllGames()
+        {
+            var gameNames = Games.Select(g => g.Name).ToList();
+            return Ok(gameNames);
         }
     }
 }

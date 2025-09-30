@@ -8,6 +8,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.gameguesser.databinding.FragmentHomeBinding
+import com.example.gameguesser.ui.keyWordGame.KeyGameFragment
+import androidx.navigation.fragment.findNavController
+import com.example.gameguesser.R
+
 
 class HomeFragment : Fragment() {
 
@@ -28,9 +32,24 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        // Text binding
+//        homeViewModel.text.observe(viewLifecycleOwner) {
+//            binding.textHome.text = it
+//        }
+
+        // Button click to open KeyGameFragment
+//        binding.playButton.setOnClickListener {
+//            parentFragmentManager.beginTransaction()
+//                .replace(
+//                    (requireView().parent as ViewGroup).id, // Replace current container
+//                    KeyGameFragment()
+//                )
+//                .addToBackStack(null) // So user can press back
+//                .commit()
+//        }
+
+        binding.playKeyWordsButton.setOnClickListener {
+            findNavController().navigate(R.id.keyGameFragment)
         }
         return root
     }
