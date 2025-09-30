@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 
-data class ChatMessage(val sender: String, val text: String)
-
 class ChatbotViewModel : ViewModel() {
     private val _messages = MutableLiveData<List<ChatMessage>>(emptyList())
     val messages: LiveData<List<ChatMessage>> = _messages
@@ -17,13 +15,13 @@ class ChatbotViewModel : ViewModel() {
     fun sendMessage(text: String) {
         // append user message
         val current = _messages.value ?: emptyList()
-        _messages.value = current + ChatMessage("You", text)
+        _messages.value = current + ChatMessage(ChatMessage.Sender.USER, text)
 
-        // simple simulated bot reply (replace with real API call)
+        // simulated bot reply (replace with real API call)
         scope.launch {
             delay(500) // simulate thinking
             val reply = "Echo: $text"
-            _messages.value = (_messages.value ?: emptyList()) + ChatMessage("Bot", reply)
+            _messages.value = (_messages.value ?: emptyList()) + ChatMessage(ChatMessage.Sender.BOT, reply)
         }
     }
 
