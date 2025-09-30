@@ -1,5 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- Height of the bottom navigation bar -->
+    <dimen name="bottom_nav_height">72dp</dimen>
+
+    <!-- Size of the icons inside the BottomNavigationView -->
+    <dimen name="bottom_nav_icon_size">36dp</dimen>
+
+    <!-- Top/bottom padding for nav items so icons are vertically centered -->
+    <dimen name="bottom_nav_vertical_padding">8dp</dimen>
+
+    <!-- Space for the nav host so content isn't hidden behind the nav bar -->
+    <dimen name="nav_host_bottom_margin">@dimen/bottom_nav_height</dimen>
 </resources>
