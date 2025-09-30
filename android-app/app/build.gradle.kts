@@ -22,8 +22,27 @@ android {
         viewBinding = true
     }
 
+    signingConfigs {
+        create("sharedDebug") {
+            storeFile = file("keystore/shared-debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+        create("release") {
+            storeFile = file("keystore/release-key.jks")
+            storePassword = "Group14"
+            keyAlias = "release"
+            keyPassword = "Group14"
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("sharedDebug")
+        }
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -31,6 +50,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -49,6 +69,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.activity)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -64,4 +85,6 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     kapt ("com.github.bumptech.glide:compiler:4.16.0")
 
+    // SSO
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
 }

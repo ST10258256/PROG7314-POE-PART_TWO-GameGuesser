@@ -1,0 +1,216 @@
+[33mcommit dc0f82c91322dbf4ddb93a3035e98b6edd4335c1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mReg-n-Login[m[33m, [m[1;31morigin/Reg-n-Login[m[33m)[m
+Author: Hassan <ST10283090@vcconnect.edu.za>
+Date:   Tue Sep 30 12:27:33 2025 +0200
+
+    pls work
+
+[33mcommit 8f365bac8d9fade10678f9d73add24b9f2b10663[m
+Author: Hassan <ST10283090@vcconnect.edu.za>
+Date:   Tue Sep 30 12:04:43 2025 +0200
+
+    SHA updated
+
+[33mcommit a137522b84a6c8fa82476b090c287cedb77faa67[m
+Author: Hassan <ST10283090@vcconnect.edu.za>
+Date:   Tue Sep 30 11:31:02 2025 +0200
+
+    Latest Push
+
+[33mcommit 8a5f2e1af3aeb979efc27a51ea349e9a5a3a41a0[m
+Author: Hassan <ST10283090@vcconnect.edu.za>
+Date:   Mon Sep 29 17:17:52 2025 +0200
+
+    Logo on run
+
+[33mcommit 6b7c5b7b5a333596278e1bda023737ea15dd78fc[m
+Author: Hassan <ST10283090@vcconnect.edu.za>
+Date:   Mon Sep 29 17:00:21 2025 +0200
+
+    Offline Mode added in
+
+[33mcommit d19660dd69fe35c66cef5e33fd772238e7ac5416[m
+Author: Hassan <ST10283090@vcconnect.edu.za>
+Date:   Sun Sep 28 18:06:14 2025 +0200
+
+    Reg n Login Ft. SSO added + minor funcs
+
+[33mcommit fcb3059d8e8bd8419e4f787dd8408495335d46b2[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: ed96839 b6ac277
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Sat Sep 27 23:18:36 2025 +0200
+
+    Functionality and Visual Improvements for the Key Words GameMode (#9)
+
+[33mcommit b6ac2771a7eee94955887713664332b3859eb971[m[33m ([m[1;31morigin/GameMode/KeyWords[m[33m)[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Sat Sep 27 23:09:53 2025 +0200
+
+    Functionality and Visual Improvements for the Key Words GameMode
+
+[33mcommit ed968393de14cedac25b774e5ca41884df038181[m
+Merge: 7e8a258 4ccc0ef
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Fri Sep 26 14:52:39 2025 +0200
+
+    Improved the UI of the home page (#8)
+
+[33mcommit 4ccc0eff49987b0dbe2d1db5714fca2df8cb6c40[m[33m ([m[1;31morigin/HomePage[m[33m)[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Fri Sep 26 14:35:50 2025 +0200
+
+    Improved the UI of the home page
+
+[33mcommit 7e8a258a2325d863e4e63062d18ba647d3c5fae3[m
+Merge: 1f8e707 8f9eb04
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Fri Sep 26 13:05:24 2025 +0200
+
+    Basic version of the Keywords Game(local db & API) (#7)
+
+[33mcommit 8f9eb04e35ca7c088b0b168c2714fa49544ff86a[m[33m ([m[1;31morigin/API[m[33m)[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Fri Sep 26 12:56:47 2025 +0200
+
+    Basic version of the Keywords Game(local db & API)
+
+[33mcommit 1f8e707ec9e6365700758d4bbcb77ca4802986ca[m
+Merge: a6ca901 7118256
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Thu Sep 25 15:23:46 2025 +0200
+
+    Initial REST API(without db connection) (#6)
+
+[33mcommit 71182564d3d72608df0e1cabf4529e9fa7e96ca1[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Thu Sep 25 15:18:56 2025 +0200
+
+    Initial REST API(without db connection)
+
+[33mcommit a6ca9018f2c93e0e785c191095f139c61fd2a800[m[33m ([m[1;31morigin/Feature/Chatbot[m[33m)[m
+Merge: e5bb488 ddade87
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Thu Sep 25 14:14:58 2025 +0200
+
+    Feature/nav bar improved (#5)
+
+[33mcommit ddade8746029bebf5e269927057d79a1fe3bb019[m[33m ([m[1;31morigin/feature/nav-bar-improved[m[33m)[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Thu Sep 25 13:54:41 2025 +0200
+
+    The nav-bar has the required links
+
+[33mcommit 737b7cfe0ea93fd1174ea79f3fca40debaa5a3d7[m
+Merge: e5bb488 42e1684
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Thu Sep 25 13:20:55 2025 +0200
+
+    Merge remote-tracking branch 'origin/Feature/Layout'
+    
+    # Conflicts:
+    #       android-app/app/src/main/res/drawable/ic_chatbot_black_24dp.xml
+    #       android-app/app/src/main/res/drawable/ic_encyclopedia_black_24dp.xml
+    #       android-app/app/src/main/res/drawable/ic_settings_black_24dp.xml
+    #       android-app/app/src/main/res/layout/fragment_chatbot.xml
+    #       android-app/app/src/main/res/layout/fragment_encyclopedia.xml
+    #       android-app/app/src/main/res/layout/fragment_settings.xml
+
+[33mcommit 42e16844c2e4d466132113313048ced82662e50a[m[33m ([m[1;31morigin/Feature/Layout[m[33m)[m
+Author: ST10258101 <130571344+ST10258101@users.noreply.github.com>
+Date:   Thu Sep 25 12:55:50 2025 +0200
+
+    Push 1
+    
+    setup fragments done
+
+[33mcommit e5bb4880d2ab848021802d2c40489e9b88da196c[m
+Merge: fb2ee59 9bb51f5
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Thu Sep 25 11:57:46 2025 +0200
+
+    Added the api file (#3)
+
+[33mcommit 9bb51f5b82105ce57960b07404fe9bd75714161f[m[33m ([m[1;31morigin/filestructures[m[33m)[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Thu Sep 25 11:50:46 2025 +0200
+
+    Fixed typo in the directory
+
+[33mcommit 4b45835bda05f230e6e39058edeb105782562055[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Thu Sep 25 11:46:00 2025 +0200
+
+    Upadated the yaml file to fit the new structure
+
+[33mcommit a758968a279d84162b0fedee5ef74cf1753cc90c[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Thu Sep 25 11:33:00 2025 +0200
+
+    Added the api file
+
+[33mcommit fb2ee59cccf769aa8f8ea83520f95031ebdac5bc[m
+Merge: e3df39e eb9f6b8
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Tue Sep 23 14:18:04 2025 +0200
+
+    Android pipeline added (#2)
+
+[33mcommit eb9f6b841b0d9d2d5ed7d561996de763b3b57cd2[m[33m ([m[1;31morigin/workflows/android-ci[m[33m)[m
+Author: lukej <lukejordan2004@gmail.com>
+Date:   Tue Sep 23 14:10:12 2025 +0200
+
+    Fix-1 for pipeline
+
+[33mcommit 0a389e7a301d42bced4f646a0162f1ac332e448b[m
+Author: lukej <lukejordan2004@gmail.com>
+Date:   Tue Sep 23 14:06:25 2025 +0200
+
+    Android pipeline added
+
+[33mcommit e3df39ef61e71329c8a4c74a839388dfeef825fa[m
+Merge: 69903c4 9e8a458
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Tue Sep 23 13:53:36 2025 +0200
+
+    Basic-NavBar (#1)
+
+[33mcommit 9e8a4580bfbac8db8c344a3227ddfe27dc7ff9dc[m[33m ([m[1;31morigin/feature/nav-bar[m[33m)[m
+Author: lukej <lukejordan2004@gmail.com>
+Date:   Tue Sep 23 13:51:35 2025 +0200
+
+    Basic-NavBar
+
+[33mcommit 69903c43095ed374299584bccba98fcb2efe2374[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Tue Sep 23 12:29:31 2025 +0200
+
+    Update README.md
+
+[33mcommit 4f8afd9c72e0e257bfa636291ebe8c3e3ca876a9[m
+Author: lukej <lukejordan2004@gmail.com>
+Date:   Tue Sep 23 12:25:51 2025 +0200
+
+    Added Android Application
+
+[33mcommit 189d8ac79430e376769bcc76243184edaae0e18e[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Tue Sep 23 12:07:46 2025 +0200
+
+    Create GUIDE.md
+
+[33mcommit 0cf164aaf1c13493f9a890b84b16a69d67319acd[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Tue Sep 23 11:43:20 2025 +0200
+
+    Update README.md
+
+[33mcommit 035c6b817068028b2c0c933c50cf7869fcda1c8e[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Tue Sep 23 11:41:27 2025 +0200
+
+    Create LICENSE
+
+[33mcommit 5637522c9a650a0300d8d40e2167d1593b81288e[m
+Author: ST10258256 <130571591+ST10258256@users.noreply.github.com>
+Date:   Tue Sep 23 10:59:21 2025 +0200
+
+    Create README.md
