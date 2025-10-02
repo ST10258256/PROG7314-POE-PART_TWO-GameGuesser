@@ -478,23 +478,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\luke jordan\\.nuget\\packages\\": {},
+    "C:\\Users\\lukej\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luke jordan\\Documents\\Varsity College\\2025\\PROG7314 POE\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj",
+      "projectUniqueName": "C:\\Users\\lukej\\OneDrive\\Documents\\Varsity College\\PROG7314\\POE_PART_TWO\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj",
       "projectName": "GameGuesserAPI",
-      "projectPath": "C:\\Users\\luke jordan\\Documents\\Varsity College\\2025\\PROG7314 POE\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj",
-      "packagesPath": "C:\\Users\\luke jordan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luke jordan\\Documents\\Varsity College\\2025\\PROG7314 POE\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\obj\\",
+      "projectPath": "C:\\Users\\lukej\\OneDrive\\Documents\\Varsity College\\PROG7314\\POE_PART_TWO\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj",
+      "packagesPath": "C:\\Users\\lukej\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lukej\\OneDrive\\Documents\\Varsity College\\PROG7314\\POE_PART_TWO\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\luke jordan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lukej\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -503,7 +503,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -522,7 +521,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -556,7 +555,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

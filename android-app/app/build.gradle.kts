@@ -1,14 +1,14 @@
 import java.util.Properties
 import java.io.FileInputStream
+import java.net.ServerSocket
 
 plugins {
-
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     kotlin("kapt")
 }
 
-
+// Load local properties
 val localProps = Properties()
 val localPropsFile = rootProject.file("local.properties")
 if (localPropsFile.exists()) {
@@ -26,9 +26,7 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
 
         buildConfigField("String", "OPENROUTER_API_KEY", "\"$openrouterKey\"")
     }
@@ -57,6 +55,36 @@ android {
     }
 }
 
+// --------------------------
+// Backend start task
+// --------------------------
+tasks.register("startBackend") {
+    doLast {
+        // Correct backend directory
+        val backendDir = file("${rootDir}/api/GameGuesserAPI")
+
+        if (!backendDir.exists()) {
+            throw GradleException("Backend directory does not exist: $backendDir")
+        }
+
+        println("Starting backend from: $backendDir")
+
+        // Open backend in a new terminal
+        ProcessBuilder("cmd", "/c", "start", "cmd", "/k", "dotnet run")
+            .directory(backendDir)
+            .start()
+    }
+}
+
+
+// Ensure backend starts before building the app
+tasks.named("preBuild") {
+    dependsOn("startBackend")
+}
+
+// --------------------------
+// Dependencies
+// --------------------------
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
