@@ -1,21 +1,24 @@
-# Use Microsoft official .NET SDK image to build the app
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+# Use .NET 9 SDK (Preview) for building the project
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-# Copy everything and restore dependencies
-COPY . .
-RUN dotnet restore
+# Copy project files
+COPY api/GameGuesserAPI/*.csproj ./GameGuesserAPI/
+RUN dotnet restore ./GameGuesserAPI/GameGuesserAPI.csproj
 
-# Build the project in Release mode
+# Copy the rest of the source
+COPY api/GameGuesserAPI/. ./GameGuesserAPI/
+WORKDIR /src/GameGuesserAPI
+
+# Build and publish
 RUN dotnet publish -c Release -o /app
 
-# Use a smaller runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+# Use .NET 9 runtime (Preview) for running the app
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
-COPY --from=build /app .
+COPY --from=build /app ./
 
-# Tell .NET to bind to any host (Render injects a $PORT variable)
-ENV ASPNETCORE_URLS=http://+:$PORT
+# Expose port (Render usually maps automatically, but 8080 is safe)
+EXPOSE 8080
 
-# Run the app
 ENTRYPOINT ["dotnet", "GameGuesserAPI.dll"]
