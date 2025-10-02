@@ -1,24 +1,24 @@
-# Use .NET 9 SDK (Preview) for building the project
+# --- Build stage ---
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-# Copy project files
-COPY api/GameGuesserAPI/*.csproj ./GameGuesserAPI/
+# Copy the csproj first and restore dependencies
+COPY api/GameGuesserAPI/GameGuesserAPI.csproj ./GameGuesserAPI/
 RUN dotnet restore ./GameGuesserAPI/GameGuesserAPI.csproj
 
-# Copy the rest of the source
+# Copy all source files
 COPY api/GameGuesserAPI/. ./GameGuesserAPI/
 WORKDIR /src/GameGuesserAPI
 
-# Build and publish
+# Publish the app
 RUN dotnet publish -c Release -o /app
 
-# Use .NET 9 runtime (Preview) for running the app
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
+# --- Runtime stage ---
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build /app ./
 
-# Expose port (Render usually maps automatically, but 8080 is safe)
-EXPOSE 8080
+# Expose the port your API uses (adjust if different)
+EXPOSE 5000
 
 ENTRYPOINT ["dotnet", "GameGuesserAPI.dll"]
