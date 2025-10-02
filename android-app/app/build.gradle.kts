@@ -58,29 +58,29 @@ android {
 // --------------------------
 // Backend start task
 // --------------------------
-tasks.register("startBackend") {
-    doLast {
-        // Correct backend directory
-        val backendDir = file("${rootDir}/api/GameGuesserAPI")
-
-        if (!backendDir.exists()) {
-            throw GradleException("Backend directory does not exist: $backendDir")
-        }
-
-        println("Starting backend from: $backendDir")
-
-        // Open backend in a new terminal
-        ProcessBuilder("cmd", "/c", "start", "cmd", "/k", "dotnet run")
-            .directory(backendDir)
-            .start()
-    }
-}
-
-
-// Ensure backend starts before building the app
-tasks.named("preBuild") {
-    dependsOn("startBackend")
-}
+//tasks.register("startBackend") {
+//    doLast {
+//        // Correct backend directory
+//        val backendDir = file("${rootDir}/api/GameGuesserAPI")
+//
+//        if (!backendDir.exists()) {
+//            throw GradleException("Backend directory does not exist: $backendDir")
+//        }
+//
+//        println("Starting backend from: $backendDir")
+//
+//        // Open backend in a new terminal
+//        ProcessBuilder("cmd", "/c", "start", "cmd", "/k", "dotnet run")
+//            .directory(backendDir)
+//            .start()
+//    }
+//}
+//
+//
+//// Ensure backend starts before building the app
+//tasks.named("preBuild") {
+//    dependsOn("startBackend")
+//}
 
 // --------------------------
 // Dependencies
