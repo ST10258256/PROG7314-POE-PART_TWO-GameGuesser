@@ -34,3 +34,39 @@ c:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PA
 C:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\luke jordan\Documents\Varsity College\2025\PROG7314 POE\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\appsettings.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\GameGuesserAPI.staticwebassets.endpoints.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\GameGuesserAPI.exe
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\GameGuesserAPI.deps.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\GameGuesserAPI.runtimeconfig.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\GameGuesserAPI.dll
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\GameGuesserAPI.pdb
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\Microsoft.OpenApi.dll
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.csproj.AssemblyReference.cache
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.AssemblyInfoInputs.cache
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.AssemblyInfo.cs
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.csproj.CoreCompileInputs.cache
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.sourcelink.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\scopedcss\bundle\GameGuesserAPI.styles.css
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGues.D217D94E.Up2Date
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.dll
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\refint\GameGuesserAPI.dll
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.pdb
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\GameGuesserAPI.genruntimeconfig.cache
+C:\Users\lukej\OneDrive\Documents\Varsity College\PROG7314\POE_PART_TWO\PROG7314-POE-PART_TWO-GameGuesser\api\GameGuesserAPI\obj\Debug\net9.0\ref\GameGuesserAPI.dll
