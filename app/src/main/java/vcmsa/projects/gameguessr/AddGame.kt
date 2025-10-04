@@ -1,12 +1,18 @@
 package vcmsa.projects.gameguessr
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,125 +25,119 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import vcmsa.projects.gameguessr.Class.Game
 import vcmsa.projects.gameguessr.Database.DatabaseBuilder
+import java.util.Calendar
 
 class AddGame : AppCompatActivity() {
+    private val genreOptions = arrayOf("Action", "Adventure", "RPG", "Shooter", "Simulation",
+        "Sports", "Strategy", "Puzzle", "Horror", "Racing")
+
+    private val povOptions = arrayOf("First-person", "Third-person", "Top-down", "Side-scroller", "Isometric")
+
+    private val platformOptions = arrayOf("PC", "PS4", "PS5", "PS3", "PS2", "Xbox 360", "Xbox Series X", "Nintendo Switch", "Nintendo Switch 2")
+    private val selectedPlatforms = mutableListOf<String>()
+
     private var selectedImageUri: Uri? = null
-
-    private lateinit var imagePreview: ImageView
-    private lateinit var coverPathInput: EditText
-
-    private val pickImageLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val uri: Uri? = result.data?.data
-                if (uri != null) {
-                    selectedImageUri = uri
-                    Glide.with(this).load(uri).into(imagePreview)
-                    coverPathInput.setText(uri.toString())
-                }
-            }
-        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_game)
 
-        val nameInput = findViewById<EditText>(R.id.editTextName)
-        val genreInput = findViewById<EditText>(R.id.editTextGenre)
-        val platformInput = findViewById<EditText>(R.id.editTextPlatform)
-        val releaseYearInput = findViewById<EditText>(R.id.editTextReleaseYear)
-        val developerInput = findViewById<EditText>(R.id.editTextDeveloper)
-        val publisherInput = findViewById<EditText>(R.id.editTextPublisher)
-        val descriptionInput = findViewById<EditText>(R.id.editTextDescription)
-        coverPathInput = findViewById(R.id.editTextCoverImagePath)
-        val budgetInput = findViewById<EditText>(R.id.editTextBudget)
-        val sagaInput = findViewById<EditText>(R.id.editTextSaga)
-        val povInput = findViewById<EditText>(R.id.editTextPOV)
+        val editName = findViewById<EditText>(R.id.editTextName)
+        val spinnerGenre = findViewById<Spinner>(R.id.spinnerGenre)
+        val buttonSelectPlatforms = findViewById<Button>(R.id.buttonSelectPlatforms)
+        val textSelectedPlatforms = findViewById<TextView>(R.id.textViewSelectedPlatforms)
+        val editReleaseYear = findViewById<EditText>(R.id.editTextReleaseYear)
+        val editDeveloper = findViewById<EditText>(R.id.editTextDeveloper)
+        val editPublisher = findViewById<EditText>(R.id.editTextPublisher)
+        val editDescription = findViewById<EditText>(R.id.editTextDescription)
+        val editBudget = findViewById<EditText>(R.id.editTextBudget)
+        val editSaga = findViewById<EditText>(R.id.editTextSaga)
+        val spinnerPOV = findViewById<Spinner>(R.id.spinnerPOV)
+        val editClue1 = findViewById<EditText>(R.id.editTextClue1)
+        val editClue2 = findViewById<EditText>(R.id.editTextClue2)
+        val editClue3 = findViewById<EditText>(R.id.editTextClue3)
+        val editClue4 = findViewById<EditText>(R.id.editTextClue4)
+        val editClue5 = findViewById<EditText>(R.id.editTextClue5)
+        val imagePreview = findViewById<ImageView>(R.id.imagePreview)
+        val editCoverImagePath = findViewById<EditText>(R.id.editTextCoverImagePath)
+        val buttonSave = findViewById<Button>(R.id.buttonSave)
 
-        imagePreview = findViewById(R.id.imagePreview)
+        spinnerGenre.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, genreOptions)
+        spinnerPOV.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, povOptions)
 
-        val clue1 = findViewById<EditText>(R.id.editTextClue1)
-        val clue2 = findViewById<EditText>(R.id.editTextClue2)
-        val clue3 = findViewById<EditText>(R.id.editTextClue3)
-        val clue4 = findViewById<EditText>(R.id.editTextClue4)
-        val clue5 = findViewById<EditText>(R.id.editTextClue5)
-
-        val saveButton = findViewById<Button>(R.id.buttonSave)
-
-        val gameDao = DatabaseBuilder.getInstance(applicationContext).gameDao()
-
-        coverPathInput.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            pickImageLauncher.launch(intent)
+        buttonSelectPlatforms.setOnClickListener {
+            val checkedItems = BooleanArray(platformOptions.size) { i -> selectedPlatforms.contains(platformOptions[i]) }
+            AlertDialog.Builder(this)
+                .setTitle("Select Platforms")
+                .setMultiChoiceItems(platformOptions, checkedItems) { _, which, isChecked ->
+                    if (isChecked) selectedPlatforms.add(platformOptions[which])
+                    else selectedPlatforms.remove(platformOptions[which])
+                }
+                .setPositiveButton("OK") { _, _ ->
+                    textSelectedPlatforms.text = if (selectedPlatforms.isEmpty()) "No platforms selected"
+                    else selectedPlatforms.joinToString(", ")
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
         }
 
-        saveButton.setOnClickListener {
-            val name = nameInput.text.toString().trim()
-            val genre = genreInput.text.toString().trim()
-            val platform = platformInput.text.toString()
-                .split(",")
-                .map { it.trim() }
-                .filter { it.isNotEmpty() }
+        editReleaseYear.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-            val releaseYear = releaseYearInput.text.toString().toIntOrNull() ?: 0
-            val developer = developerInput.text.toString().trim()
-            val publisher = publisherInput.text.toString().trim()
-            val description = descriptionInput.text.toString().trim()
-            val coverImagePath = selectedImageUri?.toString() ?: ""
-            val budget = budgetInput.text.toString().toDoubleOrNull() ?: 0.0
-            val saga = sagaInput.text.toString().trim()
-            val pov = povInput.text.toString().trim()
+            DatePickerDialog(this, { _, selectedYear, _, _ ->
+                editReleaseYear.setText(selectedYear.toString())
+            }, year, month, day).show()
+        }
 
-            val clues = listOf(
-                clue1.text.toString().trim(),
-                clue2.text.toString().trim(),
-                clue3.text.toString().trim()
-            ).filter { it.isNotEmpty() } + listOf(
-                clue4.text.toString().trim(),
-                clue5.text.toString().trim()
-            ).filter { it.isNotEmpty() }
+        val imagePicker = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                selectedImageUri = it
+                Glide.with(this).load(it).into(imagePreview)
+                editCoverImagePath.setText(it.toString())
+            }
+        }
 
-            if (name.isEmpty() || genre.isEmpty()) {
-                Toast.makeText(this, "Name and Genre are required", Toast.LENGTH_SHORT).show()
+        editCoverImagePath.setOnClickListener {
+            imagePicker.launch("image/*")
+        }
+
+        buttonSave.setOnClickListener {
+            val name = editName.text.toString()
+            if (name.isBlank()) {
+                Toast.makeText(this, "Please enter the game name", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (clues.size < 5) {
-                Toast.makeText(this, "Please enter 5 clues", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+            val game = Game(
+                name = name,
+                genre = spinnerGenre.selectedItem.toString(),
+                platform = selectedPlatforms.toList(),
+                releaseYear = editReleaseYear.text.toString().toIntOrNull() ?: 0,
+                developer = editDeveloper.text.toString(),
+                publisher = editPublisher.text.toString(),
+                description = editDescription.text.toString(),
+                coverImagePath = selectedImageUri?.toString() ?: "",
+                budget = editBudget.text.toString().toDoubleOrNull() ?: 0.0,
+                saga = editSaga.text.toString(),
+                pov = spinnerPOV.selectedItem.toString(),
+                clues = listOf(
+                    editClue1.text.toString(),
+                    editClue2.text.toString(),
+                    editClue3.text.toString(),
+                    editClue4.text.toString(),
+                    editClue5.text.toString()
+                ),
+                keywords = emptyList()
+            )
 
-            if (coverImagePath.isEmpty()) {
-                Toast.makeText(this, "Please pick a cover image", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            //Insert into Room DB
+            val dao = DatabaseBuilder.getInstance(applicationContext).gameDao()
             CoroutineScope(Dispatchers.IO).launch {
-                val game = Game(
-                    name = name,
-                    genre = genre,
-                    platform = platform,
-                    releaseYear = releaseYear,
-                    developer = developer,
-                    publisher = publisher,
-                    description = description,
-                    coverImagePath = coverImagePath,
-                    budget = budget,
-                    saga = saga,
-                    pov = pov,
-                    clues = clues
-                )
-                gameDao.insertGame(game)//dao function to insert the game
-
-                launch(Dispatchers.Main) {
-                    Toast.makeText(
-                        this@AddGame,
-                        "Game saved!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
+                dao.insertGame(game)
+                runOnUiThread {
+                    Toast.makeText(this@AddGame, "Game saved!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@AddGame, Encyclopedia::class.java)
                     startActivity(intent)
                     finish()

@@ -10,13 +10,14 @@ import com.bumptech.glide.Glide
 import vcmsa.projects.gameguessr.Class.Game
 import vcmsa.projects.gameguessr.R
 
-class GameAdapter(private var games: List<Game>) :
-    RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
+class GameAdapter( private var games: List<Game>,
+                   private val onItemClick: (Game) -> Unit   // ✅ <--- expects one parameter now
+) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
 
-    class GameViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val gameImage: ImageView = itemView.findViewById(R.id.imageViewGameCover)
-        val gameName: TextView = itemView.findViewById(R.id.textViewGameName)
-        val gameGenre: TextView = itemView.findViewById(R.id.textViewGameGenre)
+    inner class GameViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imageCover: ImageView = itemView.findViewById(R.id.imageCover)
+        val textTitle: TextView = itemView.findViewById(R.id.textTitle)
+        val textGenre: TextView = itemView.findViewById(R.id.textGenre)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
@@ -27,13 +28,18 @@ class GameAdapter(private var games: List<Game>) :
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         val game = games[position]
-        holder.gameName.text = game.name
-        holder.gameGenre.text = game.genre
+        holder.textTitle.text = game.name
+        holder.textGenre.text = game.genre
 
-        Glide.with(holder.itemView.context)
-            .load(game.coverImagePath)
-            .placeholder(android.R.drawable.ic_menu_gallery)
-            .into(holder.gameImage)
+        if (game.coverImagePath.isNotEmpty()) {
+            Glide.with(holder.itemView.context)
+                .load(game.coverImagePath)
+                .into(holder.imageCover)
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick(game)   // ✅ Pass the clicked game
+        }
     }
 
     override fun getItemCount(): Int = games.size

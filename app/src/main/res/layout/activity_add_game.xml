@@ -10,35 +10,48 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Basic Info -->
+        <!-- Game Name -->
         <EditText
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Game Name" />
 
-        <EditText
-            android:id="@+id/editTextGenre"
+        <!-- Genre Spinner -->
+        <Spinner
+            android:id="@+id/spinnerGenre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Genre"
             android:layout_marginTop="8dp" />
 
-        <EditText
-            android:id="@+id/editTextPlatform"
+        <!-- Platform MultiChoice -->
+        <Button
+            android:id="@+id/buttonSelectPlatforms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Platforms (comma separated)"
+            android:text="Select Platforms"
             android:layout_marginTop="8dp" />
 
+        <TextView
+            android:id="@+id/textViewSelectedPlatforms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No platforms selected"
+            android:textSize="14sp"
+            android:textColor="#555555"
+            android:layout_marginTop="4dp" />
+
+        <!-- Release Year Picker -->
         <EditText
             android:id="@+id/editTextReleaseYear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Release Year"
-            android:inputType="number"
+            android:focusable="false"
+            android:clickable="true"
             android:layout_marginTop="8dp" />
 
+        <!-- Developer -->
         <EditText
             android:id="@+id/editTextDeveloper"
             android:layout_width="match_parent"
@@ -46,6 +59,7 @@
             android:hint="Developer"
             android:layout_marginTop="8dp" />
 
+        <!-- Publisher -->
         <EditText
             android:id="@+id/editTextPublisher"
             android:layout_width="match_parent"
@@ -53,6 +67,7 @@
             android:hint="Publisher"
             android:layout_marginTop="8dp" />
 
+        <!-- Description -->
         <EditText
             android:id="@+id/editTextDescription"
             android:layout_width="match_parent"
@@ -60,8 +75,7 @@
             android:hint="Description"
             android:layout_marginTop="8dp" />
 
-
-
+        <!-- Budget -->
         <EditText
             android:id="@+id/editTextBudget"
             android:layout_width="match_parent"
@@ -70,6 +84,7 @@
             android:inputType="numberDecimal"
             android:layout_marginTop="8dp" />
 
+        <!-- Saga -->
         <EditText
             android:id="@+id/editTextSaga"
             android:layout_width="match_parent"
@@ -77,20 +92,14 @@
             android:hint="Saga"
             android:layout_marginTop="8dp" />
 
-        <EditText
-            android:id="@+id/editTextPOV"
+        <!-- POV Spinner -->
+        <Spinner
+            android:id="@+id/spinnerPOV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="POV"
             android:layout_marginTop="8dp" />
 
-        <!-- Clues: 5 inputs, first 3 required -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clues (first 3 required)"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
+        <!-- Clues -->
 
         <EditText
             android:id="@+id/editTextClue1"
@@ -126,7 +135,7 @@
             android:hint="Clue 5 (optional)"
             android:layout_marginTop="4dp"/>
 
-        <!-- Image preview -->
+        <!-- Image Preview -->
         <ImageView
             android:id="@+id/imagePreview"
             android:layout_width="200dp"
@@ -136,7 +145,7 @@
             android:background="#DDDDDD"
             android:contentDescription="Cover Image Preview" />
 
-        <!-- Cover image picker -->
+        <!-- Cover Image Picker -->
         <EditText
             android:id="@+id/editTextCoverImagePath"
             android:layout_width="match_parent"
@@ -145,6 +154,7 @@
             android:layout_marginTop="8dp"
             android:focusable="false"
             android:clickable="true" />
+
         <!-- Save Button -->
         <Button
             android:id="@+id/buttonSave"
