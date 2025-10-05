@@ -1,4 +1,6 @@
 using System.Globalization;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameGuesserAPI.Models
 {
