@@ -21,3 +21,5 @@ interface ApiService {
     @GET("api/games")
     fun getAllGames(): Call<List<String>>
 }
+
+//Incase the database merge fails
