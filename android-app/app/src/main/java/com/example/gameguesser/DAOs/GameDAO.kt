@@ -1,4 +1,4 @@
-package com.example.gameguesser.DAOs.GameDAO
+package com.example.gameguesser.daos
 
 import androidx.room.*
 import com.example.gameguesser.data.Game
@@ -8,8 +8,13 @@ interface GameDao {
     @Query("SELECT * FROM games")
     suspend fun getAllGames(): List<Game>
 
+
     @Query("SELECT * FROM games WHERE id = :id")
-    suspend fun getGameById(id: Int): Game?
+    suspend fun getGameById(id: String): Game?
+
+
+    @Query("SELECT * FROM games WHERE LOWER(name) = LOWER(:name) LIMIT 1")
+    suspend fun getGameByName(name: String): Game?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGames(games: List<Game>)
@@ -17,5 +22,3 @@ interface GameDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGame(game: Game)
 }
-
-
