@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using GameGuesserAPI.Models;
+using GameGuesserAPI.Services;
 
 [ApiController]
 [Route("api/[controller]")]

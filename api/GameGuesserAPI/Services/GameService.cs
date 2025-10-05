@@ -1,8 +1,10 @@
 using MongoDB.Driver;
 using GameGuesserAPI.Models;
 
-public class GameService
+namespace GameGuesserAPI.Services
 {
+    public class GameService
+    {
     private readonly IMongoCollection<Game> _games;
 
     public GameService(IMongoClient mongoClient)
@@ -34,3 +36,7 @@ public class GameService
                     .Project(g => g.Name)
                     .ToListAsync();
 }
+  
+}
+
+
