@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lukej\\OneDrive\\Documents\\Varsity College\\PROG7314\\POE_PART_TWO\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj": {}
+    "C:\\Users\\lukej\\StudioProjects\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lukej\\OneDrive\\Documents\\Varsity College\\PROG7314\\POE_PART_TWO\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj": {
+    "C:\\Users\\lukej\\StudioProjects\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lukej\\OneDrive\\Documents\\Varsity College\\PROG7314\\POE_PART_TWO\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj",
+        "projectUniqueName": "C:\\Users\\lukej\\StudioProjects\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj",
         "projectName": "GameGuesserAPI",
-        "projectPath": "C:\\Users\\lukej\\OneDrive\\Documents\\Varsity College\\PROG7314\\POE_PART_TWO\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj",
+        "projectPath": "C:\\Users\\lukej\\StudioProjects\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\GameGuesserAPI.csproj",
         "packagesPath": "C:\\Users\\lukej\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lukej\\OneDrive\\Documents\\Varsity College\\PROG7314\\POE_PART_TWO\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\obj\\",
+        "outputPath": "C:\\Users\\lukej\\StudioProjects\\PROG7314-POE-PART_TWO-GameGuesser\\api\\GameGuesserAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -53,6 +53,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.2, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.27.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

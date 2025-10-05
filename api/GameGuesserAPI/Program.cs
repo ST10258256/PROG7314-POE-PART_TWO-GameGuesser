@@ -1,4 +1,6 @@
 using Swashbuckle.AspNetCore.SwaggerGen;
+using MongoDB.Driver;
+using GameGuesserAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls("http://0.0.0.0:5188");
@@ -9,6 +11,13 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<IMongoClient>(s =>
+    new MongoClient(builder.Configuration.GetConnectionString("MongoDb")));
+
+builder.Services.AddSingleton<GameService>();
+builder.Services.AddScoped<GameService>();
+
+
 
 var app = builder.Build();
 
