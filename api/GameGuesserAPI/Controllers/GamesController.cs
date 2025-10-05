@@ -66,7 +66,16 @@ public class GamesController : ControllerBase
     [HttpGet("full")]
     public async Task<IActionResult> GetAllGamesFull()
     {
-        var games = await _gameService.GetAllGamesAsync();
-        return Ok(games);
+        try
+        {
+            var games = await _gameService.GetAllGamesAsync();
+            return Ok(games);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ex.Message);
+        }
     }
+
+
 }
