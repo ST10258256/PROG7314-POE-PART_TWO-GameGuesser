@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,12 +22,6 @@ class Encyclopedia : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: GameAdapter
     private lateinit var dao: vcmsa.projects.gameguessr.DAOs.GameDAO
-
-    private lateinit var spinnerGenre: Spinner
-    private lateinit var spinnerPlatform: Spinner
-    private lateinit var spinnerPOV: Spinner
-    private lateinit var spinnerYear: Spinner
-    private lateinit var buttonApplyFilter: Button
 
     private var allGames = listOf<Game>()
 
@@ -42,54 +38,66 @@ class Encyclopedia : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerViewGames)
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = GameAdapter(emptyList()) { selectedGame ->
-            val intent = android.content.Intent(this, GameDetail::class.java)
+            val intent = Intent(this, GameDetail::class.java)
             intent.putExtra("GAME_ID", selectedGame.id)
             startActivity(intent)
         }
         recyclerView.adapter = adapter
 
-        spinnerGenre = findViewById(R.id.spinnerFilterGenre)
-        spinnerPlatform = findViewById(R.id.spinnerFilterPlatform)
-        spinnerPOV = findViewById(R.id.spinnerFilterPOV)
-        spinnerYear = findViewById(R.id.spinnerFilterYear)
-        buttonApplyFilter = findViewById(R.id.buttonApplyFilter)
+        findViewById<FloatingActionButton>(R.id.fabFilter).setOnClickListener {
+            showFilterBottomSheet()
+        }
 
-        spinnerGenre.adapter =
-            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, genreOptions)
+        loadGames()
+    }
+
+    private fun showFilterBottomSheet() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_filter, null)
+        val dialog = BottomSheetDialog(this)
+        dialog.setContentView(dialogView)
+
+        val spinnerGenre = dialogView.findViewById<Spinner>(R.id.spinnerGenre)
+        val spinnerPlatform = dialogView.findViewById<Spinner>(R.id.spinnerPlatform)
+        val spinnerPOV = dialogView.findViewById<Spinner>(R.id.spinnerPOV)
+        val spinnerYear = dialogView.findViewById<Spinner>(R.id.spinnerYear)
+        val buttonApply = dialogView.findViewById<Button>(R.id.btnApplyFilters)
+
+        spinnerGenre.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, genreOptions)
         spinnerPlatform.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, platformOptions)
         spinnerPOV.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, povOptions)
 
-        buttonApplyFilter.setOnClickListener { applyFilter() }
+        val years = mutableListOf("All") + allGames.map { it.releaseYear.toString() }.distinct().sortedDescending()
+        spinnerYear.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, years)
 
-        loadGames()
+        buttonApply.setOnClickListener {
+            val selectedGenre = spinnerGenre.selectedItem.toString()
+            val selectedPlatform = spinnerPlatform.selectedItem.toString()
+            val selectedPOV = spinnerPOV.selectedItem.toString()
+            val selectedYear = spinnerYear.selectedItem.toString()
+            applyFilter(selectedGenre, selectedPlatform, selectedPOV, selectedYear)
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun loadGames() {
         CoroutineScope(Dispatchers.IO).launch {
             allGames = dao.getAllGames()
-            val years = mutableListOf("All") + allGames.map { it.releaseYear.toString() }.distinct().sortedDescending()
-            runOnUiThread {
-                spinnerYear.adapter = ArrayAdapter(this@Encyclopedia, android.R.layout.simple_spinner_dropdown_item, years)
-                adapter.updateGames(allGames)
-            }
+            runOnUiThread { adapter.updateGames(allGames) }
         }
     }
 
-    private fun applyFilter() {
-        val selectedGenre = spinnerGenre.selectedItem.toString()
-        val selectedPlatform = spinnerPlatform.selectedItem.toString()
-        val selectedPOV = spinnerPOV.selectedItem.toString()
-        val selectedYear = spinnerYear.selectedItem.toString()
-
+    private fun applyFilter(genre: String, platform: String, pov: String, year: String) {
         val filtered = allGames.filter { game ->
-            (selectedGenre == "Genre" || game.genre.equals(selectedGenre, ignoreCase = true)) &&
-                    (selectedPOV == "POV" || game.pov.equals(selectedPOV, ignoreCase = true)) &&
-                    (selectedPlatform == "Platform" || game.platform.any { it.equals(selectedPlatform, ignoreCase = true) }) &&
-                    (selectedYear == "Platform" || game.releaseYear.toString() == selectedYear)
+            val genreMatch = genre == "All" || game.genre.equals(genre, ignoreCase = true)
+            val povMatch = pov == "All" || game.pov.equals(pov, ignoreCase = true)
+            val platformMatch = platform == "All" || game.platform.any { it.equals(platform, ignoreCase = true) }
+            val yearMatch = year == "All" || game.releaseYear.toString() == year
+            genreMatch && povMatch && platformMatch && yearMatch
         }
 
         adapter.updateGames(filtered)
-
         Toast.makeText(this, "Showing ${filtered.size} result(s)", Toast.LENGTH_SHORT).show()
     }
 
