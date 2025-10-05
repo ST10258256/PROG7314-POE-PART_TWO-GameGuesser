@@ -5,6 +5,7 @@ import com.example.gameguesser.models.RandomGameResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -20,4 +21,11 @@ interface ApiService {
 
     @GET("api/games")
     fun getAllGames(): Call<List<String>>
+
+    @GET("api/games/full")
+    fun getAllGamesFull(): Call<List<Game>>
+
+    @GET("api/games/{id}")
+    fun getGameById(@Path("id") gameId: Int): Call<Game>
+
 }

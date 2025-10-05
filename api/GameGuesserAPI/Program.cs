@@ -9,6 +9,12 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<IMongoClient>(s =>
+    new MongoClient(builder.Configuration.GetConnectionString("MongoDb")));
+
+builder.Services.AddSingleton<GameService>();
+
+
 
 var app = builder.Build();
 
