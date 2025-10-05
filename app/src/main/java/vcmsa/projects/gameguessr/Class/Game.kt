@@ -18,7 +18,7 @@ data class Game(
     val publisher: String,
     val description: String,
     val coverImagePath: String,
-    val budget: Double,
+    val budget: Double,//yet to be change to string
     val saga: String,
     val pov: String,
     val keywords: List<String> = emptyList() , //not doing anything with keywords for now so i made it a default value
