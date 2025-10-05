@@ -6,9 +6,9 @@ namespace GameGuesserAPI.Models
 {
     public class Game
     {
-        [BsonId] 
+        [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } 
+        public string Id { get; set; } = null!;
         public string Name { get; set; }
         public string Genre { get; set; }
         public List<string> Platforms { get; set; }

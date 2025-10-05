@@ -7,7 +7,8 @@ using GameGuesserAPI.Services;
 public class GamesController : ControllerBase
 {
     private readonly GameService _gameService;
-    private static Dictionary<int, int> GameClueIndex = new Dictionary<int, int>();
+    private static Dictionary<string, int> GameClueIndex = new Dictionary<string, int>();
+
 
     public GamesController(GameService gameService)
     {
