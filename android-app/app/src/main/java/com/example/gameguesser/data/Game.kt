@@ -3,12 +3,15 @@ package com.example.gameguesser.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "games")
 //roomdb does not support List<String> directly so,
 //we have convert into a storable type using a TypeConverter
 @TypeConverters(GameConverters::class)
 data class Game(
+    @SerializedName("_id")
+    @PrimaryKey
     val id: String,
     val name: String,
     val genre: String,

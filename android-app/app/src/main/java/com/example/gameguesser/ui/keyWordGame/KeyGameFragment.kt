@@ -108,7 +108,7 @@ class KeyGameFragment : Fragment() {
                 if (response.isSuccessful) {
                     val game = response.body()
                     game?.let {
-                        currentGameId = it.id.toString()
+                        currentGameId = it.id
                         currentGameName = it.name
                         currentGameCover = it.coverImageUrl
                         keywordsChipGroup.removeAllViews()
