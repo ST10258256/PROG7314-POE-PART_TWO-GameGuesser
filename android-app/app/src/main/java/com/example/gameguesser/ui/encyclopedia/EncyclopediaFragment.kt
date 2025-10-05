@@ -11,24 +11,24 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gameguesser.R
 import com.example.gameguesser.Adapters.GameAdapter
+import com.example.gameguesser.Database.AppDatabase
 import com.example.gameguesser.GameDetail
-import com.example.gameguesser.data.Game
+import com.example.gameguesser.R
 import com.example.gameguesser.data.RetrofitClient
+import com.example.gameguesser.data.Game
+import com.example.gameguesser.repository.GameRepository
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.launch
 
 class EncyclopediaFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: GameAdapter
-
     private var allGames = listOf<Game>()
 
     private val genreOptions = listOf("All", "Action", "Adventure", "RPG", "Shooter", "Simulation", "Sports", "Strategy", "Puzzle", "Horror", "Racing", "Other")
@@ -44,46 +44,36 @@ class EncyclopediaFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerViewGames)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter = GameAdapter(allGames) { selectedGame ->
-            Log.d("GameSelected", "Game: ${selectedGame.name}, mongoId: ${selectedGame.mongoId}")
+            Log.d("GameSelected", "Game: ${selectedGame.name}, id: ${selectedGame.id}")
             val intent = Intent(requireContext(), GameDetail::class.java)
-            intent.putExtra("GAME_ID", selectedGame.mongoId)
+            intent.putExtra("GAME_ID", selectedGame.id)
             startActivity(intent)
         }
-
         recyclerView.adapter = adapter
-
 
         view.findViewById<FloatingActionButton>(R.id.fabFilter).setOnClickListener {
             showFilterBottomSheet()
         }
 
-        fetchGamesFromApi()
+        fetchGames()
 
         return view
     }
 
-    private fun fetchGamesFromApi() {
-        RetrofitClient.api.getAllGamesFull().enqueue(object : Callback<List<Game>> {
-            override fun onResponse(call: Call<List<Game>>, response: Response<List<Game>>) {
-                if (response.isSuccessful && response.body() != null) {
-                    allGames = response.body()!!
-                    allGames.forEach { game ->
-                        Log.d("GAME_FETCH", "Game: ${game.name}, id: ${game.id}, mongoId: ${game._id?.oid}")
-                    }
-                    adapter.updateGames(allGames)
+    private fun fetchGames() {
+        val dao = AppDatabase.getDatabase(requireContext()).gameDao()
+        val repository = GameRepository(dao, RetrofitClient.api)
 
-                } else {
-                    Toast.makeText(requireContext(), "Failed to load games", Toast.LENGTH_SHORT).show()
-                    Log.e("GAME_FETCH", "Response not successful or empty: ${response.errorBody()?.string()}")
-
-                }
+        lifecycleScope.launch {
+            try {
+                allGames = repository.getAllGames()
+                adapter.updateGames(allGames)
+                Log.d("GAME_FETCH", "Loaded ${allGames.size} games")
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Failed to load games", Toast.LENGTH_SHORT).show()
+                Log.e("GAME_FETCH", "Error fetching games", e)
             }
-
-            override fun onFailure(call: Call<List<Game>>, t: Throwable) {
-                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-                Log.e("GAME_FETCH", "API call failed", t)
-            }
-        })
+        }
     }
 
     private fun showFilterBottomSheet() {

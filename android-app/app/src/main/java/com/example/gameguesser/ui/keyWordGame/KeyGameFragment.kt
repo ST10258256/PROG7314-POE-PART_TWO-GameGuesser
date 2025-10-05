@@ -9,15 +9,15 @@ import android.widget.*
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.gameguesser.Database.AppDatabase
 import com.example.gameguesser.R
 import com.example.gameguesser.data.RetrofitClient
-import com.example.gameguesser.models.GuessResponse
-import com.example.gameguesser.models.RandomGameResponse
+import com.example.gameguesser.repository.GameRepository
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class KeyGameFragment : Fragment() {
 
@@ -29,7 +29,6 @@ class KeyGameFragment : Fragment() {
     private lateinit var guessInput: AutoCompleteTextView
     private lateinit var guessButton: Button
     private lateinit var keywordsChipGroup: ChipGroup
-
     private lateinit var heartsContainer: LinearLayout
     private var hearts: MutableList<ImageView> = mutableListOf()
     private val maxLives = 5
@@ -53,14 +52,19 @@ class KeyGameFragment : Fragment() {
         adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, allGames)
         guessInput.setAdapter(adapter)
 
-        // Fetch games from API
+        // Initialize hearts
+        hearts.clear()
+        for (i in 0 until maxLives) {
+            val heart = heartsContainer.getChildAt(i) as ImageView
+            hearts.add(heart)
+        }
+
         fetchAllGames()
+        fetchRandomGame()
 
         guessInput.addTextChangedListener { editable ->
             val input = editable.toString()
-            val filtered = allGames.filter { game ->
-                game.contains(input, ignoreCase = true)
-            }
+            val filtered = allGames.filter { it.contains(input, ignoreCase = true) }
             adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, filtered)
             guessInput.setAdapter(adapter)
             adapter.notifyDataSetChanged()
@@ -73,64 +77,47 @@ class KeyGameFragment : Fragment() {
                 ?: Toast.makeText(requireContext(), "Game not loaded yet", Toast.LENGTH_SHORT).show()
         }
 
-        // Initialize hearts
-        hearts.clear()
-        for (i in 0 until maxLives) {
-            val heart = heartsContainer.getChildAt(i) as ImageView
-            hearts.add(heart)
-        }
-
-        fetchRandomGame()
         return view
     }
 
     private fun fetchAllGames() {
-        RetrofitClient.api.getAllGames().enqueue(object : Callback<List<String>> {
-            override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
-                if (response.isSuccessful && response.body() != null) {
-                    allGames.clear()
-                    allGames.addAll(response.body()!!)
-                    adapter.notifyDataSetChanged()
-                } else {
-                    Toast.makeText(requireContext(), "Failed to fetch games", Toast.LENGTH_SHORT).show()
-                }
-            }
+        val dao = AppDatabase.getDatabase(requireContext()).gameDao()
+        val repository = GameRepository(dao, RetrofitClient.api)
 
-            override fun onFailure(call: Call<List<String>>, t: Throwable) {
-                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
+        CoroutineScope(Dispatchers.IO).launch {
+            val games = repository.getAllGames().map { it.name }
+            allGames.clear()
+            allGames.addAll(games)
+            CoroutineScope(Dispatchers.Main).launch { adapter.notifyDataSetChanged() }
+        }
     }
 
     private fun fetchRandomGame() {
-        RetrofitClient.api.getRandomGame().enqueue(object : Callback<RandomGameResponse> {
-            override fun onResponse(call: Call<RandomGameResponse>, response: Response<RandomGameResponse>) {
-                if (response.isSuccessful) {
-                    val game = response.body()
-                    game?.let {
-                        currentGameId = it.id
-                        currentGameName = it.name
-                        currentGameCover = it.coverImageUrl
-                        keywordsChipGroup.removeAllViews()
-                        it.keywords.forEach { keyword -> addChip(keyword) }
-                        resultText.text = ""
-                        guessInput.text.clear()
-                        resetHearts()
-                    }
-                } else {
-                    resultText.text = "Failed to load game"
+        val dao = AppDatabase.getDatabase(requireContext()).gameDao()
+        val repository = GameRepository(dao, RetrofitClient.api)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val game = repository.getRandomGame()
+            game?.let {
+                currentGameId = it.id
+                currentGameName = it.name
+                currentGameCover = it.coverImageUrl
+
+                CoroutineScope(Dispatchers.Main).launch {
+                    keywordsChipGroup.removeAllViews()
+                    it.keywords.forEach { keyword -> addChip(keyword) }
+                    resultText.text = ""
+                    guessInput.text.clear()
+                    resetHearts()
                 }
             }
-
-            override fun onFailure(call: Call<RandomGameResponse>, t: Throwable) {
-                resultText.text = "Error: ${t.message}"
-            }
-        })
+        }
     }
 
     private fun submitGuess(gameId: String, guess: String) {
-        RetrofitClient.api.submitGuess(gameId, guess).enqueue(object : Callback<GuessResponse> {
-            override fun onResponse(call: Call<GuessResponse>, response: Response<GuessResponse>) {
+        // Keep API call for submitting guess, unchanged
+        RetrofitClient.api.submitGuess(gameId, guess).enqueue(object : retrofit2.Callback<com.example.gameguesser.models.GuessResponse> {
+            override fun onResponse(call: retrofit2.Call<com.example.gameguesser.models.GuessResponse>, response: retrofit2.Response<com.example.gameguesser.models.GuessResponse>) {
                 val result = response.body()
                 if (result != null) {
                     if (result.correct) {
@@ -140,10 +127,8 @@ class KeyGameFragment : Fragment() {
                             val lastHeart = hearts.removeAt(hearts.size - 1)
                             lastHeart.visibility = View.INVISIBLE
                         }
-
                         addChip(result.hint ?: "No hint")
                         resultText.text = "Wrong"
-
                         if (hearts.isEmpty()) {
                             showEndGameDialog(false, currentGameName ?: "Unknown", currentGameCover)
                             guessButton.isEnabled = false
@@ -157,7 +142,7 @@ class KeyGameFragment : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<GuessResponse>, t: Throwable) {
+            override fun onFailure(call: retrofit2.Call<com.example.gameguesser.models.GuessResponse>, t: Throwable) {
                 Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
