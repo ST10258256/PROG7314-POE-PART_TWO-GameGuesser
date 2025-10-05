@@ -11,6 +11,7 @@ import com.example.gameguesser.databinding.FragmentHomeBinding
 import com.example.gameguesser.ui.keyWordGame.KeyGameFragment
 import androidx.navigation.fragment.findNavController
 import com.example.gameguesser.R
+import androidx.navigation.fragment.findNavController
 
 
 class HomeFragment : Fragment() {
@@ -32,21 +33,11 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Text binding
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            binding.textHome.text = it
-//        }
 
-        // Button click to open KeyGameFragment
-//        binding.playButton.setOnClickListener {
-//            parentFragmentManager.beginTransaction()
-//                .replace(
-//                    (requireView().parent as ViewGroup).id, // Replace current container
-//                    KeyGameFragment()
-//                )
-//                .addToBackStack(null) // So user can press back
-//                .commit()
-//        }
+        binding.playGameGuesserButton.setOnClickListener {
+            // navigate using the fragment id we added to the nav graph
+            findNavController().navigate(R.id.gguesserFragment)
+        }
 
         binding.playKeyWordsButton.setOnClickListener {
             findNavController().navigate(R.id.keyGameFragment)

@@ -9,8 +9,7 @@ import com.example.gameguesser.data.Game
 import com.example.gameguesser.DAOs.GameDAO.GameDao
 import com.example.gameguesser.data.GameConverters
 
-
-@Database(entities = [Game::class], version = 1)
+@Database(entities = [Game::class], version = 1, exportSchema = false)
 @TypeConverters(GameConverters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun gameDao(): GameDao
@@ -26,15 +25,11 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "game_db"
                 )
-                    .addTypeConverter(GameConverters())
+                    // DO NOT add a GameConverters instance here. The @TypeConverters annotation above is sufficient.
                     .build()
                 INSTANCE = instance
                 instance
             }
         }
-
     }
 }
-
-
-

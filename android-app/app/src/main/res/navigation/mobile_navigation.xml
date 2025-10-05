@@ -30,11 +30,7 @@
         android:label="@string/title_chatbot"
         tools:layout="@layout/fragment_chatbot" />
 
-    <fragment
-        android:id="@+id/navigation_encyclopedia"
-        android:name="com.example.gameguesser.ui.encyclopedia.EncyclopediaFragment"
-        android:label="@string/title_encyclopedia"
-        tools:layout="@layout/fragment_encyclopedia" />
+
 
     <fragment
         android:id="@+id/navigation_settings"
@@ -48,5 +44,11 @@
         android:label="Keyword Game"
         tools:layout="@layout/fragment_key_game" />
 
+
+    <fragment
+        android:id="@+id/gguesserFragment"
+        android:name="com.example.gameguesser.ui.gguesser.GGuesserFragment"
+        android:label="Game Guesser"
+        tools:layout="@layout/fragment_gguesser" />
 
 </navigation>
