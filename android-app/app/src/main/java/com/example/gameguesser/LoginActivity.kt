@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.postDelayed
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.gameguesser.Class.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -17,6 +18,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import kotlinx.coroutines.launch
 import java.util.logging.Handler
 
 class LoginActivity : AppCompatActivity() {
@@ -83,10 +85,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
-            // if fails, example sha-1 not added to ggogle console
             val account = completedTask.getResult(ApiException::class.java)
             if (account != null) {
-                // shared pref for other parts when we need
+                // saves them to shared pred for offline
                 val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
                 with(prefs.edit()) {
                     putString("userName", account.displayName)
@@ -94,18 +95,29 @@ class LoginActivity : AppCompatActivity() {
                     putString("userId", account.id)
                     apply()
                 }
+                // also saves them to room
+                val user = User(
+                    userId = account.id ?: "",
+                    userName = account.displayName ?: "Player",
+                    streak = 0
+                )
 
-                // welcome back toast, could remove since we have the dynMIC label
+                val db = UserDatabase.getDatabase(this)
+                kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.IO).launch {
+                    db.userDao().addUser(user)
+                }
+
+                // welcm back msg
                 Toast.makeText(this, "Welcome ${account.displayName}", Toast.LENGTH_SHORT).show()
 
                 // goes to main
                 goToMainActivity(account)
             }
         } catch (e: ApiException) {
-            // error msg
             Toast.makeText(this, "Sign-in failed: ${e.statusCode}", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     private fun goToMainActivity(account: GoogleSignInAccount?) {
         // flow to main, cant go back to login, needs to logout, ps. added in logout
