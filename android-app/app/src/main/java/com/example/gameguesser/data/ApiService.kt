@@ -26,6 +26,6 @@ interface ApiService {
     fun getAllGamesFull(): Call<List<Game>>
 
     @GET("api/games/{id}")
-    fun getGameById(@Path("id") gameId: String): Call<Game>
+    fun getGameById(@Path("id") id: String): Call<Game>
 
 }

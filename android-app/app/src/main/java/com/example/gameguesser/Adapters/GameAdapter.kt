@@ -1,5 +1,6 @@
 package com.example.gameguesser.Adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,8 +44,12 @@ class GameAdapter(
         }
 
         holder.itemView.setOnClickListener {
+            val mongoId = game.mongoId // or game.id if you want the MongoDB ID
+            Log.d("GameClick", "Clicked game: ${game.name}, mongoId: $mongoId")
+
             onItemClick(game)
         }
+
     }
 
     override fun getItemCount(): Int = games.size

@@ -1,29 +1,45 @@
 package com.example.gameguesser.data
 
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "games")
-//roomdb does not support List<String> directly so,
-//we have convert into a storable type using a TypeConverter
 @TypeConverters(GameConverters::class)
 data class Game(
+
+    @Ignore
     @SerializedName("_id")
+    var _id: IdObject? = null,  // holds the Mongo _id
+
     @PrimaryKey
-    val id: String,
-    val name: String,
-    val genre: String,
-    val platforms: List<String>,
-    val releaseYear: Int,
-    val developer: String,
-    val publisher: String,
-    val description: String,
-    val coverImageUrl: String,
-    val budget: Double,//yet to be change to string
-    val saga: String,
-    val pov: String,
-    val keywords: List<String> = emptyList() , //not doing anything with keywords for now so i made it a default value
-    val clues: List<String>
+    var id: String = "",
+
+    var name: String = "",
+    var genre: String = "",
+    var platforms: List<String> = emptyList(),
+    var releaseYear: Int = 0,
+    var developer: String = "",
+    var publisher: String = "",
+    var description: String = "",
+    var coverImageUrl: String = "",
+    var budget: Double = 0.0,
+    var saga: String = "",
+    var pov: String = "",
+    var clues: List<String> = emptyList(),
+    var keywords: List<String> = emptyList(),
+
+    ) {
+
+    val mongoId: String
+        get() = _id?.oid ?: id
+
+    constructor() : this(_id = null)
+}
+
+data class IdObject(
+    @SerializedName("\$oid")
+    val oid: String = ""
 )
