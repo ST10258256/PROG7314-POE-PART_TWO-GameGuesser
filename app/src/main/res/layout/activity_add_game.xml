@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F4F9"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/textViewHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Game"
+            android:textColor="#1A153A"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp" />
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Game Name"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:elevation="2dp" />
+
+        <Spinner
+            android:id="@+id/spinnerGenre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:popupBackground="#FFFFFF"
+            android:backgroundTint="#1A153A" />
+
+        <Button
+            android:id="@+id/buttonSelectPlatforms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Platforms"
+            android:textAllCaps="false"
+            android:textColor="#F4F4F9"
+            android:backgroundTint="#1A153A"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/textViewSelectedPlatforms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No platforms selected"
+            android:textSize="14sp"
+            android:textColor="#C9C8D3"
+            android:layout_marginTop="4dp" />
+
+        <EditText
+            android:id="@+id/editTextReleaseYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Release Year"
+            android:focusable="false"
+            android:clickable="true"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextDeveloper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Developer"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextPublisher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Publisher"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextBudget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Budget"
+            android:inputType="numberDecimal"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextSaga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Saga"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:layout_marginTop="8dp" />
+
+        <Spinner
+            android:id="@+id/spinnerPOV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:popupBackground="#FFFFFF"
+            android:backgroundTint="#1A153A" />
+
+        <!-- Clues -->
+        <EditText
+            android:id="@+id/editTextClue1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Clue 1"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/editTextClue2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Clue 2"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:layout_marginTop="4dp" />
+
+        <EditText
+            android:id="@+id/editTextClue3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Clue 3"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:layout_marginTop="4dp" />
+
+        <EditText
+            android:id="@+id/editTextClue4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Clue 4"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:layout_marginTop="4dp" />
+
+        <EditText
+            android:id="@+id/editTextClue5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Clue 5"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:layout_marginTop="4dp" />
+
+        <ImageView
+            android:id="@+id/imagePreview"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:background="#C9C8D3"
+            android:contentDescription="Cover Image Preview"
+            android:clipToOutline="true" />
+
+        <EditText
+            android:id="@+id/editTextCoverImagePath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tap to pick cover image"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:textColor="#1A153A"
+            android:textColorHint="#C9C8D3"
+            android:layout_marginTop="8dp"
+            android:focusable="false"
+            android:clickable="true" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Game"
+            android:textAllCaps="false"
+            android:textColor="#F4F4F9"
+            android:backgroundTint="#1A153A"
+            android:layout_marginTop="20dp"
+            android:elevation="3dp" />
+
+    </LinearLayout>
+</ScrollView>
