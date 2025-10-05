@@ -28,7 +28,7 @@ public class GamesController : ControllerBase
     }
 
     [HttpPost("guess")]
-    public async Task<IActionResult> SubmitGuess(int gameId, string guess)
+    public async Task<IActionResult> SubmitGuess(string gameId, string guess)
     {
         var game = await _gameService.GetGameByIdAsync(gameId);
         if (game == null) return NotFound("Game not found.");
@@ -56,7 +56,7 @@ public class GamesController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetGameById(int id)
+    public async Task<IActionResult> GetGameById(string id)
     {
         var game = await _gameService.GetGameByIdAsync(id);
         if (game == null) return NotFound();

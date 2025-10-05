@@ -15,7 +15,7 @@ interface ApiService {
 
     @POST("api/Games/guess")
     fun submitGuess(
-        @Query("gameId") gameId: Int,
+        @Query("gameId") gameId: String,
         @Query("guess") guess: String
     ): Call<GuessResponse>
 

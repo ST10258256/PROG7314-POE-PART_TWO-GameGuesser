@@ -21,7 +21,7 @@ import retrofit2.Response
 
 class KeyGameFragment : Fragment() {
 
-    private var currentGameId: Int? = null
+    private var currentGameId: String? = null
     private var currentGameName: String? = null
     private var currentGameCover: String? = null
 
@@ -108,7 +108,7 @@ class KeyGameFragment : Fragment() {
                 if (response.isSuccessful) {
                     val game = response.body()
                     game?.let {
-                        currentGameId = it.id
+                        currentGameId = it.id.toString()
                         currentGameName = it.name
                         currentGameCover = it.coverImageUrl
                         keywordsChipGroup.removeAllViews()
@@ -128,7 +128,7 @@ class KeyGameFragment : Fragment() {
         })
     }
 
-    private fun submitGuess(gameId: Int, guess: String) {
+    private fun submitGuess(gameId: String, guess: String) {
         RetrofitClient.api.submitGuess(gameId, guess).enqueue(object : Callback<GuessResponse> {
             override fun onResponse(call: Call<GuessResponse>, response: Response<GuessResponse>) {
                 val result = response.body()

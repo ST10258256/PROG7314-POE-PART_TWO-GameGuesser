@@ -9,7 +9,7 @@ import androidx.room.TypeConverters
 //we have convert into a storable type using a TypeConverter
 @TypeConverters(GameConverters::class)
 data class Game(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val id: String,
     val name: String,
     val genre: String,
     val platforms: List<String>,
