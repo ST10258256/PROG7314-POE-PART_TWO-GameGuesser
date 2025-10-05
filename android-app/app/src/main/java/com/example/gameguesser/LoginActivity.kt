@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
             // User still has a valid Google session
             goToMainActivity(account)
         } else {
-            // Fallback: check SharedPreferences for offline mode
+            // check SharedPreferences for offline mode
             val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
             val savedUserId = prefs.getString("userId", null)
             val savedUserName = prefs.getString("userName", null)
@@ -76,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signIn() {
-        // Get the intent from the Google client and launch the sign-in flow
+        // gt the intent from the Google client and launch the sign-in flow
         val signInIntent = googleSignInClient.signInIntent
         signInLauncher.launch(signInIntent)
     }

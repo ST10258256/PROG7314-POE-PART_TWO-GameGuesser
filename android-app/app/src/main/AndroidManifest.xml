@@ -15,6 +15,11 @@
         android:theme="@style/Theme.GameGuesser"
         tools:targetApi="31">
 
+<!--        Test for error 10-->
+<!--        <meta-data-->
+<!--            android:name="com.google.android.gms.client.id"-->
+<!--            android:value="@string/server_client_id" />-->
+
         <!--made the login activity the one that opnes up on run-->
         <activity
             android:name=".LoginActivity"
