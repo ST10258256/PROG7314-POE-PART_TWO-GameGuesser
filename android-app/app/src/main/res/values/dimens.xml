@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Height of the bottom navigation bar -->
-    <dimen name="bottom_nav_height">72dp</dimen>
+    <!-- Use Material recommended sizes -->
+    <dimen name="bottom_nav_height">56dp</dimen>
+    <dimen name="bottom_nav_icon_size">24dp</dimen>
 
-    <!-- Size of the icons inside the BottomNavigationView -->
-    <dimen name="bottom_nav_icon_size">36dp</dimen>
+    <!-- internal padding should be 0 so items are vertically centered by the view -->
+    <dimen name="bottom_nav_vertical_padding">0dp</dimen>
 
-    <!-- Top/bottom padding for nav items so icons are vertically centered -->
-    <dimen name="bottom_nav_vertical_padding">8dp</dimen>
-
-    <!-- Space for the nav host so content isn't hidden behind the nav bar -->
+    <!-- keep a named margin for fragment bottom -->
     <dimen name="nav_host_bottom_margin">@dimen/bottom_nav_height</dimen>
 </resources>
