@@ -1,17 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="12dp"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Settings"/>
-    <Switch
-        android:id="@+id/darkModeSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:text="Enable dark mode" />
-</LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"/>
+
+        <Switch
+            android:id="@+id/darkModeSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Enable dark mode" />
+
+        <!-- Section for logged-in users -->
+        <LinearLayout
+            android:id="@+id/loggedInLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btnEditUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edit Username"
+                android:layout_marginBottom="10dp"/>
+
+            <Button
+                android:id="@+id/btnEditPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edit Password"
+                android:layout_marginBottom="10dp"/>
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout"/>
+        </LinearLayout>
+
+        <!-- Section for non-logged-in users -->
+        <LinearLayout
+            android:id="@+id/notLoggedInLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btnLoginRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login or Register" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
