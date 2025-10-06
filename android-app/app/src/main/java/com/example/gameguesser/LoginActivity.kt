@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val devBypass = true
+        val devBypass = false
         if (devBypass) {
             Toast.makeText(this, "Bypassing login (DEV MODE)", Toast.LENGTH_SHORT).show()
             goToMainActivity(null)

@@ -125,7 +125,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("com.github.bumptech.glide:glide:4.16.0")
-    implementation(libs.androidx.databinding.adapters)
     kapt("com.github.bumptech.glide:compiler:4.16.0")
 
     testImplementation(libs.junit)
@@ -148,10 +147,3 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:21.2.0")
 }
 
-    val roomVersion = "2.6.1"
-    implementation("androidx.room:room-runtime:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
-    implementation("com.google.code.gson:gson:2.10.1")
-
-}
