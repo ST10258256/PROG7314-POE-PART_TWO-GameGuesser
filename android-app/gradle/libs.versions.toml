@@ -12,6 +12,10 @@ lifecycleLivedataKtx = "2.9.4"
 lifecycleViewmodelKtx = "2.9.4"
 navigationFragmentKtx = "2.9.4"
 navigationUiKtx = "2.9.4"
+activity = "1.11.0"
+roomCompiler = "2.8.1"
+roomCommonJvm = "2.8.1"
+roomRuntimeJvm = "2.8.1"
 databindingAdapters = "8.13.0"
 
 [libraries]
@@ -26,6 +30,10 @@ androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecy
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
+androidx-room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
+androidx-room-runtime-jvm = { group = "androidx.room", name = "room-runtime-jvm", version.ref = "roomRuntimeJvm" }
 androidx-databinding-adapters = { group = "androidx.databinding", name = "databinding-adapters", version.ref = "databindingAdapters" }
 
 [plugins]
