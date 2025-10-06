@@ -1,37 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp">
-    <TextView
-        android:id="@+id/chatTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Chat will appear here"
-        android:padding="8dp"
-        app:layout_constraintTop_toTopOf="parent"
+    android:padding="8dp">
 
-        app:layout_constraintBottom_toTopOf="@id/messageEditText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <EditText
-        android:id="@+id/messageEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Type a message"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messagesRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="72dp"
+        android:clipToPadding="false"
+        android:padding="8dp" />
 
-        app:layout_constraintEnd_toStartOf="@id/sendButton"
-        app:layout_constraintStart_toStartOf="parent" />
-    <Button
-        android:id="@+id/sendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/inputRow"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/messageEditText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="Type a message"
+            android:imeOptions="actionSend"
+            android:maxLines="4"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Send" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

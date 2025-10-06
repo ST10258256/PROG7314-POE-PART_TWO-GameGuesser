@@ -1,8 +1,20 @@
+import java.util.Properties
+import java.io.FileInputStream
+import java.net.ServerSocket
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt")
+    kotlin("kapt")
 }
+
+// Load local properties
+val localProps = Properties()
+val localPropsFile = rootProject.file("local.properties")
+if (localPropsFile.exists()) {
+    FileInputStream(localPropsFile).use { localProps.load(it) }
+}
+val openrouterKey: String = (localProps.getProperty("OPENROUTER_API_KEY") ?: "").trim()
 
 android {
     namespace = "com.example.gameguesser"
@@ -14,12 +26,14 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "OPENROUTER_API_KEY", "\"$openrouterKey\"")
     }
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     signingConfigs {
@@ -61,12 +75,41 @@ android {
     }
 }
 
-dependencies {
+// --------------------------
+// Backend start task
+// --------------------------
+//tasks.register("startBackend") {
+//    doLast {
+//        // Correct backend directory
+//        val backendDir = file("${rootDir}/api/GameGuesserAPI")
+//
+//        if (!backendDir.exists()) {
+//            throw GradleException("Backend directory does not exist: $backendDir")
+//        }
+//
+//        println("Starting backend from: $backendDir")
+//
+//        // Open backend in a new terminal
+//        ProcessBuilder("cmd", "/c", "start", "cmd", "/k", "dotnet run")
+//            .directory(backendDir)
+//            .start()
+//    }
+//}
+//
+//
+//// Ensure backend starts before building the app
+//tasks.named("preBuild") {
+//    dependsOn("startBackend")
+//}
 
+// --------------------------
+// Dependencies
+// --------------------------
+dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
@@ -76,6 +119,14 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")       // annotation processor
     implementation("androidx.room:room-ktx:2.6.1")  // coroutines support
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.androidx.databinding.adapters)
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -97,3 +148,10 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:21.2.0")
 }
 
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    implementation("com.google.code.gson:gson:2.10.1")
+
+}
