@@ -1,4 +1,4 @@
-package com.example.gameguesser
+package com.example.gameguesser.Database
 
 import android.content.Context
 import androidx.room.Database
