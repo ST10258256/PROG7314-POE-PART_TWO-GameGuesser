@@ -9,13 +9,13 @@ plugins {
 }
 
 // Load local properties
-val localProps = Properties()
-val localPropsFile = rootProject.file("local.properties")
-if (localPropsFile.exists()) {
-    FileInputStream(localPropsFile).use { localProps.load(it) }
-}
-val openrouterKey: String = (localProps.getProperty("OPENROUTER_API_KEY") ?: "").trim()
-
+//val localProps = Properties()
+//val localPropsFile = rootProject.file("local.properties")
+//if (localPropsFile.exists()) {
+//    FileInputStream(localPropsFile).use { localProps.load(it) }
+//}
+//val openrouterKey: String = (localProps.getProperty("OPENROUTER_API_KEY") ?: "").trim()
+val openrouterKey = "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"
 android {
     namespace = "com.example.gameguesser"
     compileSdk = 36
@@ -145,5 +145,7 @@ dependencies {
 
     // SSO
     implementation("com.google.android.gms:play-services-auth:21.2.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+
 }
 
