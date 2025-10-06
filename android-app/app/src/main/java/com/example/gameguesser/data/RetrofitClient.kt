@@ -8,7 +8,7 @@ import java.lang.reflect.Type
 
 object RetrofitClient {
 
-    private const val BASE_URL = "https://gameguesser-api.onrender.com"
+    private const val BASE_URL = "https://gameguesser-api.onrender.com/"
 
     val gson = GsonBuilder()
         .registerTypeAdapter(object : TypeToken<List<Game>>() {}.type, JsonDeserializer { json, _, _ ->
