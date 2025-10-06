@@ -9,13 +9,13 @@ plugins {
 }
 
 // Load local properties
-val localProps = Properties()
-val localPropsFile = rootProject.file("local.properties")
-if (localPropsFile.exists()) {
-    FileInputStream(localPropsFile).use { localProps.load(it) }
-}
-val openrouterKey: String = (localProps.getProperty("OPENROUTER_API_KEY") ?: "").trim()
-
+//val localProps = Properties()
+//val localPropsFile = rootProject.file("local.properties")
+//if (localPropsFile.exists()) {
+//    FileInputStream(localPropsFile).use { localProps.load(it) }
+//}
+//val openrouterKey: String = (localProps.getProperty("OPENROUTER_API_KEY") ?: "").trim()
+val openrouterKey = "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"
 android {
     namespace = "com.example.gameguesser"
     compileSdk = 36
@@ -36,8 +36,27 @@ android {
         buildConfig = true
     }
 
+    signingConfigs {
+        create("sharedDebug") {
+            storeFile = file("keystore/shared-debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+        create("release") {
+            storeFile = file("keystore/release-key.jks")
+            storePassword = "Group14"
+            keyAlias = "release"
+            keyPassword = "Group14"
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("sharedDebug")
+        }
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -50,6 +69,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
@@ -93,23 +113,39 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.activity)
+
+    // Room (correct Android dependencies)
+    implementation("androidx.room:room-runtime:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")       // annotation processor
+    implementation("androidx.room:room-ktx:2.6.1")  // coroutines support
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("com.github.bumptech.glide:glide:4.16.0")
-    implementation(libs.androidx.databinding.adapters)
     kapt("com.github.bumptech.glide:compiler:4.16.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    val roomVersion = "2.6.1"
-    implementation("androidx.room:room-runtime:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
-    implementation("com.google.code.gson:gson:2.10.1")
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
+
+    // SSO
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
 
 }
+
