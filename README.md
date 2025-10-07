@@ -55,7 +55,8 @@ npm run dev
 ```
 
 You will also have to change this line in this code to your local port
-<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/01792956-dc5e-48cb-932a-92207c0d1825" />
+<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/577ce1ed-15dd-4b41-817b-433efffc7ab2" />
+
 
 ---
 
