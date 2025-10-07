@@ -6,14 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2E2157"
-    tools:context=".ui.settings.SettingsFragment">
+    tools:context=".ui.settings.EditProfileFragment">
+
 
     <!-- Page Title -->
     <TextView
         android:id="@+id/settingsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
+        android:text="Edit My Profile"
         android:textColor="@android:color/white"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -26,6 +27,7 @@
     <LinearLayout
         android:id="@+id/settingsContainer"
         android:layout_width="match_parent"
+
         android:layout_height="0dp"
         android:background="@drawable/rounded_top_bg"
         android:gravity="center_horizontal"
@@ -35,7 +37,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
-
 
         <ImageView
             android:id="@+id/profileImage"
@@ -48,7 +49,7 @@
             android:contentDescription="User Profile" />
 
 
-        <!-- User’s name (display only) -->
+        <!-- Displayed Username -->
         <TextView
             android:id="@+id/tvDisplayName"
             android:layout_width="wrap_content"
@@ -57,73 +58,78 @@
             android:text="Guest"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
-        <Button
-            android:id="@+id/btnProfile"
+        <!-- Displayed Username -->
+        <TextView
+            android:id="@+id/sUsername"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="left"
+            android:text="Username"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
+
+        <!-- Username Edit -->
+        <EditText
+            android:layout_marginLeft="20dp"
+            android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="start|center_vertical"
-            android:paddingEnd="12dp"
-            android:text="Profile   >"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false" />
+            android:layout_marginTop="16dp"
+            android:hint="Username"
+            android:padding="15dp"
+            android:inputType="textPersonName"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/white" />
 
-        <Button
-            android:id="@+id/btnDeleteAccount"
+        <!-- Displayed Username -->
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:id="@+id/sPhoneN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="left"
+            android:text="Phone Number"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
+
+        <!-- Phone Edit -->
+        <EditText
+            android:layout_marginLeft="20dp"
+            android:id="@+id/etPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="start|center_vertical"
-            android:paddingEnd="12dp"
-            android:text="Delete Account   >"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false" />
+            android:layout_marginTop="16dp"
+            android:hint="Phone Number"
+            android:padding="15dp"
+            android:inputType="phone"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/white" />
 
-        <Button
-            android:id="@+id/btnHelp"
+        <!-- Email (view only) -->
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tvEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="start|center_vertical"
-            android:paddingEnd="12dp"
-            android:text="Help and FAQs   >"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/btnTandC"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="start|center_vertical"
-            android:paddingEnd="12dp"
-            android:text="Terms and Conditions   >"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/btnLanguages"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="start|center_vertical"
-            android:paddingEnd="12dp"
-            android:text="Languages   >"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false" />
-
+            android:layout_marginTop="16dp"
+            android:text="user@email.com"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
         <!-- Save Button -->
         <Button
-            android:id="@+id/btnLogout"
+            android:id="@+id/btnSaveChanges"
             android:layout_width="295dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Logout" />
+            android:text="Update Profile" />
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

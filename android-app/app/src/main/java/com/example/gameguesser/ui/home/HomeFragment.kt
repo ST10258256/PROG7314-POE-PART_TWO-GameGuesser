@@ -37,21 +37,8 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.btnLogout.setOnClickListener {
-            // signs them out of ggole and the app
-            val googleSignInClient = GoogleSignIn.getClient(requireContext(),
-                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build())
-            googleSignInClient.signOut().addOnCompleteListener {
-                // clears shared pref
-                val prefs = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-                prefs.edit().clear().apply()
 
-                // goes back to login activity
-                val intent = Intent(requireContext(), LoginActivity::class.java)
-                startActivity(intent)
-                requireActivity().finish()
-            }
-        }
+
 
         //displays the name in the user label, felt cute might delete later
         val account = GoogleSignIn.getLastSignedInAccount(requireContext())
