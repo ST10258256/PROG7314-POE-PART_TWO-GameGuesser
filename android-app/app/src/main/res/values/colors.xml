@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="p_gtextbox">#BEC3D2</color>
+    <color name="purple_bg">#191937</color>
+    <color name="lPurple_sub_bg">#3C3264</color>
+
+
 </resources>

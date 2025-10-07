@@ -48,5 +48,9 @@
         android:label="Keyword Game"
         tools:layout="@layout/fragment_key_game" />
 
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.gameguesser.ui.settings.EditProfileFragment"
+        android:label="Edit Profile" />
 
 </navigation>

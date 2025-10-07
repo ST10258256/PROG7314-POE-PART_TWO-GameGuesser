@@ -16,6 +16,7 @@
             android:background="?attr/colorPrimary"
             android:title="@string/app_name"
             app:titleTextColor="@android:color/white" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <fragment
@@ -39,6 +40,7 @@
         app:labelVisibilityMode="labeled"
         app:itemRippleColor="?attr/colorControlHighlight"
         app:menu="@menu/bottom_nav_menu" />
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

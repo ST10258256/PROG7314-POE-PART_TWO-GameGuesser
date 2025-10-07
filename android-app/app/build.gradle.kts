@@ -144,7 +144,7 @@ dependencies {
     kapt("com.github.bumptech.glide:compiler:4.16.0")
 
     // SSO
-    implementation("com.google.android.gms:play-services-auth:21.2.0")
+    implementation("com.google.android.gms:play-services-auth:21.4.0")
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
 
 }
