@@ -44,7 +44,7 @@ This is the project for android studio and this is the project that you will run
 
 Now that it is open in android studio it should look somehting like this 
 <img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/a467747b-a2e6-4b13-8a9e-5b157dd311a4" />
-You will Click the run button at the top to start the emulator of the app.
+You will have to build Gradle first then Click the run button at the top to start the emulator of the app.
 
 Your app should work perfetly fine, log in with SSO and then since the API is running on render it should be able to make the API requests to the database that is running online. You are able to change the backend and make the app take requests from there instead
 
