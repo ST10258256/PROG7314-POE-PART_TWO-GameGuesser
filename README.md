@@ -48,6 +48,15 @@ You will have to build Gradle first then Click the run button at the top to star
 
 Your app should work perfetly fine, log in with SSO and then since the API is running on render it should be able to make the API requests to the database that is running online. You are able to change the backend and make the app take requests from there instead
 
+If there is an issue with the api you will have to launch the backend api locally with 
+
+```bash
+npm run dev
+```
+
+You will also have to change this line in this code to your local port
+<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/01792956-dc5e-48cb-932a-92207c0d1825" />
+
 ---
 
 ### Prerequisites
