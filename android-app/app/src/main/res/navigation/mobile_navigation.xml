@@ -53,4 +53,24 @@
         android:name="com.example.gameguesser.ui.settings.EditProfileFragment"
         android:label="Edit Profile" />
 
+    <fragment
+        android:id="@+id/deleteAccountFragment"
+        android:name="com.example.gameguesser.ui.settings.DeleteAccountFragment"
+        android:label="Delete Account" />
+
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.gameguesser.ui.settings.HelpFragment"
+        android:label="Help Page" />
+
+    <fragment
+        android:id="@+id/termsFragment"
+        android:name="com.example.gameguesser.ui.settings.TermsFragment"
+        android:label="Terms and conditions page" />
+
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.example.gameguesser.ui.settings.LanguagesFragment"
+        android:label="languages page" />
+
 </navigation>

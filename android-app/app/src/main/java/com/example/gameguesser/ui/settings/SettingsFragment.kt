@@ -1,5 +1,6 @@
 package com.example.gameguesser.ui.settings
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -61,18 +62,47 @@ class SettingsFragment : Fragment() {
             findNavController().navigate(R.id.editProfileFragment)
         }
 
-        // Logout Functionality
-        binding.btnLogout.setOnClickListener {
-            googleSignInClient.signOut().addOnCompleteListener {
-                Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show()
-
-                // Launch the LoginActivity and clear the back stack
-                val intent = Intent(requireContext(), LoginActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-            }
+        //Navigate to Delete Account Profile
+        binding.btnDeleteAccount.setOnClickListener {
+            findNavController().navigate(R.id.deleteAccountFragment)
         }
 
+        //Navigate to Help
+        binding.btnHelp.setOnClickListener {
+            findNavController().navigate(R.id.helpFragment)
+        }
+
+        //Navigate to Terms and conditions
+        binding.btnTandC.setOnClickListener {
+            findNavController().navigate(R.id.termsFragment)
+        }
+
+        //Navigate to Languages
+        binding.btnLanguages
+
+            .setOnClickListener {
+                findNavController().navigate(R.id.languageFragment)
+            }
+
+        binding.btnLogout.setOnClickListener {
+            // signs them out of ggole and the app
+            val googleSignInClient = GoogleSignIn.getClient(
+                requireContext(),
+                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail()
+                    .build()
+            )
+            googleSignInClient.signOut().addOnCompleteListener {
+                // clears shared pref
+                val prefs = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+                prefs.edit().clear().apply()
+
+                // goes back to login activity
+                val intent = Intent(requireContext(), LoginActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+            }
+
+        }
     }
 
     override fun onDestroyView() {

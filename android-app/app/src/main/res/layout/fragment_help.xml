@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2E2157"
+    tools:context=".ui.settings.HelpFragment">
+
+
+    <!-- Page Title -->
+    <TextView
+        android:id="@+id/settingsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help and FAQs"
+        android:textColor="@android:color/white"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:paddingBottom="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp" />
+
+    <LinearLayout
+        android:id="@+id/settingsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/rounded_top_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/settingsTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- FAQ Item 1 -->
+        <Button
+            android:layout_marginTop="30dp"
+            android:id="@+id/btnFaq1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How do I play Game Guesser?"
+            android:backgroundTint="#432F73"
+            android:textColor="@android:color/white"
+            android:gravity="start|center_vertical"/>
+
+        <TextView
+            android:id="@+id/tvFaq1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Game Guesser is a puzzle game where you guess games based on hints. Earn points and try to improve your streak!"
+            android:textColor="#E0DAF5"
+            android:padding="12dp"
+            android:visibility="gone"
+            android:background="#432F73"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- FAQ Item 2 -->
+        <Button
+            android:id="@+id/btnFaq2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Can I reset my progress?"
+            android:backgroundTint="#432F73"
+            android:textColor="@android:color/white"
+            android:gravity="start|center_vertical"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvFaq2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Currently, progress cannot be reset manually. To reset, you may need to log out and log in with a new account."
+            android:textColor="#E0DAF5"
+            android:padding="12dp"
+            android:visibility="gone"
+            android:background="#432F73"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- FAQ Item 3 -->
+        <Button
+            android:id="@+id/btnFaq3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How do I contact support?"
+            android:backgroundTint="#432F73"
+            android:textColor="@android:color/white"
+            android:gravity="start|center_vertical"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvFaq3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You can contact support via email at support@example.com. We'll respond within 48 hours."
+            android:textColor="#E0DAF5"
+            android:padding="12dp"
+            android:visibility="gone"
+            android:background="#432F73"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- FAQ Item 3 -->
+        <Button
+            android:id="@+id/btnFaq4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How does game guesser cost?"
+            android:backgroundTint="#432F73"
+            android:textColor="@android:color/white"
+            android:gravity="start|center_vertical"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvFaq4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Game is free"
+            android:textColor="#E0DAF5"
+            android:padding="12dp"
+            android:visibility="gone"
+            android:background="#432F73"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- FAQ Item 3 -->
+        <Button
+            android:id="@+id/btnFaq5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How do I customize game guesser?"
+            android:backgroundTint="#432F73"
+            android:textColor="@android:color/white"
+            android:gravity="start|center_vertical"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvFaq5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Customization is currently limited so currently there is only darkmode"
+            android:textColor="#E0DAF5"
+            android:padding="12dp"
+            android:visibility="gone"
+            android:background="#432F73"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- FAQ Item 3 -->
+        <Button
+            android:id="@+id/btnFaq6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How do I delete my account?"
+            android:backgroundTint="#432F73"
+            android:textColor="@android:color/white"
+            android:gravity="start|center_vertical"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvFaq6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Use the delete account action in the settings tab under account deletion"
+            android:textColor="#E0DAF5"
+            android:padding="12dp"
+            android:visibility="gone"
+            android:background="#432F73"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- FAQ Item 3 -->
+        <Button
+            android:id="@+id/btnFaq7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How do I find my father?"
+            android:backgroundTint="#432F73"
+            android:textColor="@android:color/white"
+            android:gravity="start|center_vertical"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvFaq7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This app can not help you locate any missing parental figures."
+            android:textColor="#E0DAF5"
+            android:padding="12dp"
+            android:visibility="gone"
+            android:background="#432F73"
+            android:layout_marginBottom="12dp"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
