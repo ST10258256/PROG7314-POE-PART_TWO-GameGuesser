@@ -66,7 +66,7 @@ class GameRepository(
             if (games.isNotEmpty()) {
                 dao.insertGames(games)
             }
-        } catch (_: Exception) { /* ignore errors */ }
+        } catch (_: Exception) {}
     }
 }
 

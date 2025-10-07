@@ -40,7 +40,7 @@ class GameDetail : AppCompatActivity() {
             return
         }
 
-// Fetch game from API
+        // Fetch game from API
         RetrofitClient.api.getGameById(gameId).enqueue(object : Callback<Game> {
             override fun onResponse(call: Call<Game>, response: Response<Game>) {
                 val game = response.body()

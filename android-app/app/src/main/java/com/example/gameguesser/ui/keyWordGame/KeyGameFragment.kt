@@ -115,7 +115,7 @@ class KeyGameFragment : Fragment() {
     }
 
     private fun submitGuess(gameId: String, guess: String) {
-        // Keep API call for submitting guess, unchanged
+        // Keep API call for submitting guess
         RetrofitClient.api.submitGuess(gameId, guess).enqueue(object : retrofit2.Callback<com.example.gameguesser.models.GuessResponse> {
             override fun onResponse(call: retrofit2.Call<com.example.gameguesser.models.GuessResponse>, response: retrofit2.Response<com.example.gameguesser.models.GuessResponse>) {
                 val result = response.body()

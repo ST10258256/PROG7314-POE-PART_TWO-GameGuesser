@@ -44,7 +44,7 @@ class GameAdapter(
         }
 
         holder.itemView.setOnClickListener {
-            val mongoId = game.mongoId // or game.id if you want the MongoDB ID
+            val mongoId = game.mongoId
             Log.d("GameClick", "Clicked game: ${game.name}, mongoId: $mongoId")
 
             onItemClick(game)
