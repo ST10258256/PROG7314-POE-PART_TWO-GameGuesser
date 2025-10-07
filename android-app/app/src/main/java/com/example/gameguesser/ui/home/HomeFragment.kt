@@ -10,13 +10,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.gameguesser.databinding.FragmentHomeBinding
-import com.example.gameguesser.ui.keyWordGame.KeyGameFragment
+// import com.example.gameguesser.ui.keyWordGame.KeyGameFragment  // commented out - game guesser part
 import androidx.navigation.fragment.findNavController
 import com.example.gameguesser.LoginActivity
 import com.example.gameguesser.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-
 
 class HomeFragment : Fragment() {
 
@@ -37,16 +36,12 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
-
-
-        //displays the name in the user label, felt cute might delete later
+        // displays the name in the user label, felt cute might delete later
         val account = GoogleSignIn.getLastSignedInAccount(requireContext())
         account?.let {
             val displayName = it.displayName ?: "Player"
             binding.usernameText.text = displayName
         }
-
 
         // Text binding
 //        homeViewModel.text.observe(viewLifecycleOwner) {
@@ -54,16 +49,21 @@ class HomeFragment : Fragment() {
 //        }
 
         // Button click to open KeyGameFragment
-//        binding.playButton.setOnClickListener {
-//            parentFragmentManager.beginTransaction()
-//                .replace(
-//                    (requireView().parent as ViewGroup).id, // Replace current container
-//                    KeyGameFragment()
-//                )
-//                .addToBackStack(null) // So user can press back
-//                .commit()
-//        }
+        // (Game guessage/play other game code commented out)
+        /*
+        // Previously used to open KeyGameFragment directly via fragment transaction:
+        binding.playButton.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(
+                    (requireView().parent as ViewGroup).id, // Replace current container
+                    KeyGameFragment()
+                )
+                .addToBackStack(null) // So user can press back
+                .commit()
+        }
+        */
 
+        // Navigate to Key Game (active)
         binding.playKeyWordsButton.setOnClickListener {
             findNavController().navigate(R.id.keyGameFragment)
         }
